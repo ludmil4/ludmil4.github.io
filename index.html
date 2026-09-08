@@ -76,7 +76,7 @@ nav button.active{background:#fff;color:#111}
 .method-step{min-height:160px}.method-step .n{font-size:22px;font-weight:500;color:var(--orange)}.method-step h3{margin:7px 0 6px;font-size:14px;font-weight:500}.method-step p{font-size:11px;font-weight:400;color:var(--muted);margin:0}
 .links{display:flex;gap:8px;flex-wrap:wrap}.method-link-button{display:inline-flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;border:1px solid rgba(25,25,25,.14);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(25,25,25,.035);font-size:10px;font-weight:500;transition:.18s ease}.method-link-button:hover{transform:translateY(-1px);background:#111;color:#fff;box-shadow:0 7px 18px rgba(25,25,25,.12)}.method-link-button span{font-size:9px;font-weight:400;font-style:italic;color:var(--muted)}.method-link-button:hover span{color:#ddd}
 .btn{border:1px solid var(--ink);background:#fff;color:var(--ink);padding:8px 11px;border-radius:11px;font-size:11px;font-weight:500;cursor:pointer}.btn.primary{background:var(--ink);color:#fff}
-.sync{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sync span{font-size:10px;font-weight:400;font-style:italic;color:var(--muted)}
+.sync{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sync span{font-size:10px;font-weight:400;font-style:italic;color:var(--muted)}.progress-sync-card{border-color:rgba(16,45,14,.16)}.progress-sync-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.progress-sync-copy{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.progress-sync-copy span{font-size:10px;font-style:italic;color:var(--muted)}.progress-memory{display:flex;gap:7px;align-items:center;font-size:10px;color:var(--muted)}.progress-memory i{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
 .deep-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.deep-select{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:11px}.deep-hero{display:grid;grid-template-columns:1.45fr .55fr;gap:12px}.deep-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.deep-meta .card{min-height:108px}.deep-meta small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}.deep-meta strong{font-size:15px;font-weight:500;line-height:1.25}.deep-subject{padding:14px 0;border-bottom:1px solid var(--line)}.deep-subject:last-child{border-bottom:0}.deep-subject-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.deep-subject-head h3{margin:0;font-size:14px;font-weight:500}.deep-subject-head p{margin:4px 0 0;color:var(--muted);font-size:11px;font-style:italic}.deep-actions{display:flex;gap:7px;flex-wrap:wrap}.asset-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid rgba(25,25,25,.14);border-radius:999px;padding:7px 10px;background:#fff;font-size:10px;font-weight:500}.asset-link:hover{background:#111;color:#fff}.asset-link.disabled{opacity:.45;pointer-events:none}.question-preview{margin-top:11px;border-top:1px dashed #d9d6cb;padding-top:9px}.question-card{padding:10px 0;border-bottom:1px dashed #e3dfd6}.question-card:last-child{border-bottom:0}.question-card b{display:block;font-size:11px;font-weight:500;margin-bottom:4px}.question-card p{margin:0;font-size:11px;line-height:1.5}.question-source{margin-top:4px!important;color:var(--muted);font-style:italic;font-size:10px!important}.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sim-asset{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.sim-asset b{display:block;font-size:13px;font-weight:500;margin-bottom:5px}.sim-asset p{margin:0 0 10px;color:var(--muted);font-size:11px;font-style:italic}.footer{padding:22px 0;text-align:center;color:#8d8a81;font-size:10px;font-weight:400;font-style:italic}
 @media(max-width:1000px){.g4,.g3,.g2,.g21{grid-template-columns:1fr 1fr}.subjects,.weeks{grid-template-columns:1fr}.overview-strip{grid-template-columns:repeat(2,1fr)}.overview-stat:nth-child(3){border-left:0;padding-left:0;margin-top:16px}.overview-stat:nth-child(4){margin-top:16px}.current-study-grid{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);text-align:center}.deep-hero{grid-template-columns:1fr}.deep-meta{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.shell{padding:10px}.topbar{grid-template-columns:1fr}.brand,.topmeta{display:none}nav{justify-self:center;max-width:100%;overflow:auto}.g4,.g3,.g2,.g21,.alloc,.links,.current-study-grid,.deep-meta,.sim-grid{grid-template-columns:1fr}.overview-strip{grid-template-columns:1fr}.overview-stat,.overview-stat:not(:first-child),.overview-stat:nth-child(3),.overview-stat:nth-child(4){padding:10px 0;border-left:0;border-bottom:1px solid var(--line);margin-top:0}.alloc div+div{padding-left:0;border-left:0}.current-study-head{flex-direction:column}.arch-row{grid-template-columns:1fr 55px 70px}.deep-subject-head{flex-direction:column}}
@@ -102,7 +102,7 @@ nav button.active{background:#fff;color:#111}
       <div class="overview-title"><div><div class="kicker">Overview</div><h2>Progresso do projeto</h2></div><p>Macroindicadores atualizados pelo cronograma e pelos agentes.</p></div>
       <div class="overview-strip">
         <div class="overview-stat"><small>Semanas concluídas</small><strong id="mWeeks">0/17</strong><div class="progress-line"><i id="pWeeks" style="width:0"></i></div></div>
-        <div class="overview-stat"><small>Disciplinas consolidadas</small><strong id="mSubjects">0/11</strong><div class="progress-line"><i id="pSubjects" style="width:0"></i></div></div>
+        <div class="overview-stat"><small>Disciplinas cobertas</small><strong id="mSubjects">0/11</strong><div class="progress-line"><i id="pSubjects" style="width:0"></i></div></div>
         <div class="overview-stat attn"><small>Matéria que pede atenção</small><strong id="mAttention">Sem base</strong><span id="mAttentionWhy">Aguardando diagnóstico do Tutor.</span></div>
         <div class="overview-stat writing"><small>Redação da semana</small><strong id="mWriting">A definir</strong><span id="mWritingMeta">O Agente de Redação registrará o tema.</span></div>
       </div>
@@ -117,6 +117,14 @@ nav button.active{background:#fff;color:#111}
     </div>
 
     <div class="premium-card"><div class="section-head"><h2>Carga semanal recalculável</h2><p>Pesos, não dias fixos.</p></div><div class="load-panel"><input class="range" id="hoursRange" type="range" min="6" max="12" value="10"><div class="alloc"><div><strong id="basicHours">6h</strong><small>60% • Conhecimentos básicos</small></div><div><strong id="techHours">2h</strong><small>20% • Tecnologia</small></div><div><strong id="writingHours">2h</strong><small>20% • Redação e discursivas</small></div></div></div></div>
+
+    <div class="premium-card progress-sync-card">
+      <div class="section-head"><h2>Memória do progresso</h2><p>Destination = interface • GitHub = memória persistente.</p></div>
+      <div class="progress-sync-row">
+        <div class="progress-memory"><i></i><span id="progressPersistStatus">verificando progresso persistido…</span></div>
+        <div class="progress-sync-copy"><button class="btn primary" id="copyProgress">Copiar progresso para o Tutor</button><span>Gera um snapshot dos checks atuais para persistência no GitHub.</span></div>
+      </div>
+    </div>
 
     <div class="premium-card"><div class="section-head"><h2>Estratégia adaptativa</h2><p>Fluxo de estudo + acesso aos agentes.</p></div><div class="strategy-row"><div class="strategy"><span>estudar</span><b>→</b><span>testar</span><b>→</b><span>diagnosticar</span><b>→</b><span>reforçar</span><b>→</b><span>recalcular</span></div><div class="agent-buttons"><a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank">Agente de Redação ↗</a><a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-tutor.md" target="_blank">Tutor IA ↗</a></div></div></div>
 
@@ -143,8 +151,8 @@ nav button.active{background:#fff;color:#111}
     <div class="premium-card"><div class="section-head"><h2>Conteúdo e banco de questões</h2><p>3 questões por microconteúdo • sem gabarito antes da tentativa.</p></div><div id="deepSubjects"></div></div>
   </section>
 
-  <section class="view" id="syllabus"><div class="section-head"><div><div class="kicker">Cobertura</div><h2>Mapa do edital 2024</h2></div><p>Marque um microtema quando conseguir explicar e resolver questão equivalente.</p></div><div class="subjects" id="subjectGrid"></div></section>
-  <section class="view" id="weeks"><div class="section-head"><div><div class="kicker">Cronograma contínuo</div><h2>17 semanas de domínio</h2></div><p>Sem dias fixos. A conclusão da semana é registrada pelo checkbox.</p></div><div class="weeks" id="weeksGrid"></div></section>
+  <section class="view" id="syllabus"><div class="section-head"><div><div class="kicker">Cobertura</div><h2>Mapa do edital 2024</h2></div><p>Marque quando estudar/concluir o microtema. Domínio é avaliado separadamente pelo Tutor.</p></div><div class="subjects" id="subjectGrid"></div></section>
+  <section class="view" id="weeks"><div class="section-head"><div><div class="kicker">Cronograma contínuo</div><h2>17 semanas de estudo</h2></div><p>Sem dias fixos. O checkbox registra conclusão factual; domínio vem do diagnóstico do Tutor.</p></div><div class="weeks" id="weeksGrid"></div></section>
 
   <section class="view" id="performance">
     <div class="section-head"><div><div class="kicker">Central</div><h2>Desempenho</h2></div><div class="sync"><button class="btn primary" id="syncPerformance">Sincronizar agentes</button><span id="syncStatus">dados locais + GitHub</span></div></div>
@@ -158,7 +166,7 @@ nav button.active{background:#fff;color:#111}
     <div class="section-head"><div><div class="kicker">Sistema de estudo</div><h2>Metodologia</h2></div><p>Como o projeto transforma estudo em diagnóstico e ajuste.</p></div>
     <div class="card"><div class="flow"><div class="node"><strong>Chat</strong><span>planeja a sessão</span></div><div class="arrow">→</div><div class="node"><strong>Estudo</strong><span>conteúdo + prática</span></div><div class="arrow">→</div><div class="node"><strong>Agentes</strong><span>avaliam e estruturam</span></div><div class="arrow">→</div><div class="node"><strong>GitHub</strong><span>persiste os dados</span></div><div class="arrow">→</div><div class="node"><strong>Destination</strong><span>mostra o progresso</span></div></div></div>
     <div class="section-head"><h2>Fluxo metodológico</h2></div><div class="grid g4"><div class="card method-step"><div class="n">01</div><h3>Baseline</h3><p>Questões e exercícios revelam o nível atual antes de aprofundar o conteúdo.</p></div><div class="card method-step"><div class="n">02</div><h3>Sequence</h3><p>O cronograma define a próxima sequência de conteúdos, sem amarrar dias da semana.</p></div><div class="card method-step"><div class="n">03</div><h3>Diagnóstico</h3><p>O Tutor identifica lacunas, padrões de erro e disciplinas que merecem reforço.</p></div><div class="card method-step"><div class="n">04</div><h3>Kaizen</h3><p>O ciclo é recalculado com base no desempenho; o erro precisa virar regra aprendida.</p></div></div>
-    <div class="grid g2"><div><div class="section-head"><h2>Responsabilidades</h2></div><div class="card"><p><b>Lud</b> informa fatos: horas, conteúdos estudados, dificuldades percebidas, simulados/provas e resultados.</p><p><b>Tutor IA</b> ensina, seleciona questões, corrige, diagnostica, gera simulados, prioriza reforço, próxima Sequence e Cut List. Não sobrescreve dado factual.</p><p><b>Agente de Redação</b> escolhe/registra o tema semanal, orienta o planejamento, corrige pelas bancas e grava notas em <code>dados/redacoes.json</code>.</p><p><b>Destination</b> consolida e visualiza o que deve aparecer à candidata; sua alteração é o gatilho da publicação.</p></div></div><div><div class="section-head"><h2>Links importantes</h2></div><div class="links"><a class="method-link-button" href="https://github.com/ludmil4/BACEN" target="_blank"><b>Repositório BACEN</b><span>estrutura completa do projeto ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/tree/main/provas/concursos" target="_blank"><b>Biblioteca de provas</b><span>corpus de treino ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank"><b>Agente de Redação</b><span>documentação ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-tutor.md" target="_blank"><b>Agente Tutor</b><span>documentação ↗</span></a><a class="method-link-button" href="https://www.cebraspe.org.br/concursos/bcb_24" target="_blank"><b>Edital BCB 2024</b><span>referência oficial ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/redacoes.json" target="_blank"><b>Dados de redação</b><span>histórico do agente ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/tutor.json" target="_blank"><b>Dados do Tutor</b><span>diagnóstico e reforço ↗</span></a></div></div></div>
+    <div class="grid g2"><div><div class="section-head"><h2>Responsabilidades</h2></div><div class="card"><p><b>Lud</b> marca no Destination os fatos de estudo: semanas e microtemas concluídos; também informa respostas, simulados e demais evidências.</p><p><b>Tutor IA</b> persiste o snapshot factual em <code>dados/progresso.json</code>, ensina, corrige e registra diagnóstico/desempenho em <code>dados/tutor.json</code>. Check não equivale a domínio.</p><p><b>Agente de Redação</b> escolhe/registra o tema semanal, orienta o planejamento, corrige pelas bancas e grava notas em <code>dados/redacoes.json</code>.</p><p><b>Destination</b> é a interface de acompanhamento e cópia de trabalho dos checks; os JSONs no GitHub preservam a memória do projeto. Sua alteração é o gatilho da publicação.</p></div></div><div><div class="section-head"><h2>Links importantes</h2></div><div class="links"><a class="method-link-button" href="https://github.com/ludmil4/BACEN" target="_blank"><b>Repositório BACEN</b><span>estrutura completa do projeto ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/tree/main/provas/concursos" target="_blank"><b>Biblioteca de provas</b><span>corpus de treino ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank"><b>Agente de Redação</b><span>documentação ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-tutor.md" target="_blank"><b>Agente Tutor</b><span>documentação ↗</span></a><a class="method-link-button" href="https://www.cebraspe.org.br/concursos/bcb_24" target="_blank"><b>Edital BCB 2024</b><span>referência oficial ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/redacoes.json" target="_blank"><b>Dados de redação</b><span>histórico do agente ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/tutor.json" target="_blank"><b>Dados do Tutor</b><span>diagnóstico e reforço ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/progresso.json" target="_blank"><b>Dados de progresso</b><span>checks persistidos ↗</span></a></div></div></div>
   </section>
 
   <div class="footer">BACEN destination • estudo → diagnóstico → persistência → visualização</div>
@@ -167,11 +175,12 @@ nav button.active{background:#fff;color:#111}
 (()=>{
 const STORE='bacenDestinationV3';
 const legacy=JSON.parse(localStorage.getItem('bacenDestinationV2')||localStorage.getItem('bacenDestinationV1')||'null');
-const S=JSON.parse(localStorage.getItem(STORE)||'null')||legacy||{topics:{},weeks:{},hours:10};
-S.topics=S.topics||{};S.weeks=S.weeks||{};S.hours=S.hours||10;
+const S=JSON.parse(localStorage.getItem(STORE)||'null')||legacy||{topics:{},weeks:{},hours:10,updated_at:null,progressDirty:false};
+S.topics=S.topics||{};S.weeks=S.weeks||{};S.hours=S.hours||10;S.updated_at=S.updated_at||null;S.progressDirty=!!S.progressDirty;
 const save=()=>localStorage.setItem(STORE,JSON.stringify(S));
-const URLS={redacoes:null,tutor:null};
-let remote={"redacoes":[],"tutor":[]};
+const saveProgress=()=>{S.updated_at=new Date().toISOString();S.progressDirty=true;progressCopyNote='';save();renderProgressStatus()};
+const URLS={redacoes:null,tutor:null,progresso:null};
+let remote={"redacoes":[],"tutor":[],"progresso":{"schema_version":1,"updated_at":null,"semana_atual":null,"semanas":[],"mapa_edital":{},"eventos":[]}};
 const PUBLIC_EMBEDDED_DATA=true;
 const ROOT='https://github.com/ludmil4/BACEN/blob/main/';
 const exam=[['Língua Portuguesa',25,'#102D0E'],['Lógica e Estatística',10,'#DD4517'],['Direito Administrativo',5,'#DB7519'],['Macroeconomia',5,'#ED9043'],['Microeconomia',5,'#F9B480'],['Engenharia de Software',24,'#FFAA00'],['Infraestrutura em TI',17,'#102D0E'],['Ciência de Dados',14,'#DD4517'],['Segurança da Informação',7,'#DB7519'],['Bancos de Dados',4,'#ED9043'],['Gestão em TI',4,'#F9B480']];
@@ -231,12 +240,50 @@ const slug=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().re
 const key=(s,i)=>s+'::'+i;
 const fmt=h=>{let a=Math.floor(h),m=Math.round((h-a)*60);return m?`${a}h${m}`:`${a}h`};
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+// PROGRESS_BRIDGE_V1
+let progressCopyNote='';
+const cleanTopic=t=>String(t??'').replace(/^★\s*/,'').trim();
+function applyRemoteProgress(){
+ const p=remote.progresso;
+ if(!p||typeof p!=='object')return;
+ let changed=false;
+ (Array.isArray(p.semanas)?p.semanas:[]).forEach(w=>{let n=Number(w.week??w.semana);if(n>=1&&n<=weeks.length&&w.concluida===true&&!S.weeks[n]){S.weeks[n]=true;changed=true}});
+ const map=p.mapa_edital&&typeof p.mapa_edital==='object'?p.mapa_edital:{};
+ Object.entries(map).forEach(([name,val])=>{
+  const def=subjects[name];if(!def)return;
+  let list=Array.isArray(val)?val:Object.entries(val||{}).filter(([,v])=>!!v).map(([k])=>k);
+  list.forEach(topic=>{let idx=def.t.findIndex(t=>cleanTopic(t)===cleanTopic(topic));if(idx>=0&&!S.topics[key(name,idx)]){S.topics[key(name,idx)]=true;changed=true}})
+ });
+ if(changed){S.updated_at=p.updated_at||S.updated_at;if(!S.progressDirty)S.progressDirty=false;save()}
+}
+function progressSnapshot(){
+ const mapa={};
+ Object.entries(subjects).forEach(([name,x])=>{let done=x.t.filter((_,i)=>!!S.topics[key(name,i)]).map(cleanTopic);if(done.length)mapa[name]=done});
+ return {schema_version:1,generated_at:new Date().toISOString(),source:'destination',semana_atual:currentWeek(),semanas:weeks.map((w,i)=>({week:i+1,status:S.weeks[i+1]?'concluida':'em_andamento',concluida:!!S.weeks[i+1]})),mapa_edital:mapa};
+}
+function renderProgressStatus(){
+ const el=document.getElementById('progressPersistStatus');if(!el)return;
+ if(progressCopyNote){el.textContent=progressCopyNote;return}
+ if(S.progressDirty){el.textContent='alterações locais ainda não persistidas no GitHub';return}
+ const d=remote.progresso?.updated_at;
+ el.textContent=d?'progresso persistido no GitHub • '+String(d).replace('T',' ').slice(0,16):'sem snapshot persistido no GitHub';
+}
+async function copyProgressSnapshot(){
+ const text='SNAPSHOT_PROGRESSO_BACEN\n'+JSON.stringify(progressSnapshot(),null,2);
+ try{
+  if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(text);
+  else throw new Error('clipboard indisponível');
+ }catch(e){
+  const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();
+ }
+ progressCopyNote='snapshot copiado • cole na conversa com o Tutor';renderProgressStatus();
+}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===b.dataset.tab));if(b.dataset.tab==='deepdive')renderDeepDive(+deepWeekSelect.value||currentWeek())});
 examArchitecture.innerHTML=exam.map(([n,q,c])=>`<div class="arch-row"><b><i class="arch-dot" style="background:${c}"></i>${n}</b><strong>${q} itens</strong><span>${(q/120*100).toFixed(1).replace('.',',')}%</span></div>`).join('');
 function updateHours(){let h=+hoursRange.value;S.hours=h;save();basicHours.textContent=fmt(h*.6);techHours.textContent=fmt(h*.2);writingHours.textContent=fmt(h*.2)}hoursRange.value=S.hours;hoursRange.oninput=updateHours;updateHours();
-function renderSubjects(){subjectGrid.innerHTML='';Object.entries(subjects).forEach(([name,x])=>{let d=x.t.filter((_,i)=>S.topics[key(name,i)]).length;let box=document.createElement('div');box.className='subject';box.innerHTML=`<div class="subject-head"><div><div class="subject-title">${name}</div><div class="subject-meta">${x.g} • peso ${x.n}</div></div><b>${d}/${x.t.length}</b></div>`;x.t.forEach((t,i)=>{let deep=t.startsWith('★ '),k=key(name,i),r=document.createElement('div');r.className='topic '+(S.topics[k]?'done':'');r.innerHTML=`<input type="checkbox" ${S.topics[k]?'checked':''}><label>${deep?t.slice(2):t}</label><span class="tag ${deep?'deep':''}">${deep?'aprofundamento':'microtema'}</span>`;r.querySelector('input').onchange=e=>{S.topics[k]=e.target.checked;save();renderSubjects();renderOverview()};box.appendChild(r)});subjectGrid.appendChild(box)})}
+function renderSubjects(){subjectGrid.innerHTML='';Object.entries(subjects).forEach(([name,x])=>{let d=x.t.filter((_,i)=>S.topics[key(name,i)]).length;let box=document.createElement('div');box.className='subject';box.innerHTML=`<div class="subject-head"><div><div class="subject-title">${name}</div><div class="subject-meta">${x.g} • peso ${x.n}</div></div><b>${d}/${x.t.length}</b></div>`;x.t.forEach((t,i)=>{let deep=t.startsWith('★ '),k=key(name,i),r=document.createElement('div');r.className='topic '+(S.topics[k]?'done':'');r.innerHTML=`<input type="checkbox" ${S.topics[k]?'checked':''}><label>${deep?t.slice(2):t}</label><span class="tag ${deep?'deep':''}">${deep?'aprofundamento':'microtema'}</span>`;r.querySelector('input').onchange=e=>{S.topics[k]=e.target.checked;saveProgress();renderSubjects();renderOverview()};box.appendChild(r)});subjectGrid.appendChild(box)})}
 function writingForWeek(i){let candidates=remote.redacoes.filter(r=>Number(r.week??r.semana??r.cronograma_etapa)===(i+1));return candidates[candidates.length-1]||null}
-function renderWeeks(){weeksGrid.innerHTML='';weeks.forEach((w,i)=>{let done=!!S.weeks[i+1],red=writingForWeek(i),theme=red?.tema||red?.theme||null;let el=document.createElement('article');el.className='week '+(done?'completed':'');el.innerHTML=`<div class="week-top"><div><div class="week-num">SEMANA ${String(i+1).padStart(2,'0')}</div><h3>${w.title}</h3></div><label class="week-status"><input class="week-check" type="checkbox" ${done?'checked':''}> concluída</label></div><div class="chips">${w.subjects.map(s=>`<span class="chip">${s}</span>`).join('')}</div><div class="week-block"><b>Foco</b>${w.focus}</div><div class="week-block wr"><b>Redação</b>${theme?esc(theme):w.writing+' • tema ainda não registrado'}</div><div class="week-block"><b>Kaizen</b>${w.kaizen}</div>`;el.querySelector('input').onchange=e=>{S.weeks[i+1]=e.target.checked;save();renderWeeks();renderOverview();renderDeepDive(currentWeek())};weeksGrid.appendChild(el)})}
+function renderWeeks(){weeksGrid.innerHTML='';weeks.forEach((w,i)=>{let done=!!S.weeks[i+1],red=writingForWeek(i),theme=red?.tema||red?.theme||null;let el=document.createElement('article');el.className='week '+(done?'completed':'');el.innerHTML=`<div class="week-top"><div><div class="week-num">SEMANA ${String(i+1).padStart(2,'0')}</div><h3>${w.title}</h3></div><label class="week-status"><input class="week-check" type="checkbox" ${done?'checked':''}> concluída</label></div><div class="chips">${w.subjects.map(s=>`<span class="chip">${s}</span>`).join('')}</div><div class="week-block"><b>Foco</b>${w.focus}</div><div class="week-block wr"><b>Redação</b>${theme?esc(theme):w.writing+' • tema ainda não registrado'}</div><div class="week-block"><b>Kaizen</b>${w.kaizen}</div>`;el.querySelector('input').onchange=e=>{S.weeks[i+1]=e.target.checked;saveProgress();renderWeeks();renderOverview();renderDeepDive(currentWeek())};weeksGrid.appendChild(el)})}
 function completedSubjectCount(){return Object.entries(subjects).filter(([n,x])=>x.t.every((_,i)=>S.topics[key(n,i)])).length}
 function normalizeList(v){if(!v)return[];if(Array.isArray(v))return v;return String(v).split(/[;,•]/).map(x=>x.trim()).filter(Boolean)}
 function latestTutor(){return remote.tutor[remote.tutor.length-1]||null}
@@ -252,15 +299,17 @@ function renderPerformance(){let lt=latestTutor(),diff=difficultyMap(),sims=extr
 async function getJSON(url){let r=await fetch(url+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(r.status);return r.json()}
 async function sync(all=true){
  if(typeof PUBLIC_EMBEDDED_DATA!=='undefined' && PUBLIC_EMBEDDED_DATA){
-  renderWeeks();renderOverview();renderPerformance();
+  if(typeof applyRemoteProgress==='function')applyRemoteProgress();
+  renderSubjects();renderWeeks();renderOverview();renderPerformance();
+  if(typeof renderProgressStatus==='function')renderProgressStatus();
   syncStatus.textContent='snapshot publicado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   return;
- }try{syncStatus.textContent='sincronizando…';let [r,t]=await Promise.all([getJSON(URLS.redacoes),getJSON(URLS.tutor)]);remote.redacoes=Array.isArray(r)?r:(r.redacoes||[]);remote.tutor=Array.isArray(t)?t:(t.avaliacoes||[]);renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek());syncStatus.textContent='sincronizado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}catch(e){syncStatus.textContent='sem conexão • mantendo dados locais';renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek())}}
-syncPerformance.onclick=()=>sync();renderSubjects();renderWeeks();renderOverview();renderPerformance();renderDeepDive(currentWeek());sync();
+ }try{syncStatus.textContent='sincronizando…';let [r,t,p]=await Promise.all([getJSON(URLS.redacoes),getJSON(URLS.tutor),getJSON(URLS.progresso)]);remote.redacoes=Array.isArray(r)?r:(r.redacoes||[]);remote.tutor=Array.isArray(t)?t:(t.avaliacoes||[]);remote.progresso=p&&typeof p==='object'?p:{};applyRemoteProgress();renderSubjects();renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek());renderProgressStatus();syncStatus.textContent='sincronizado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}catch(e){syncStatus.textContent='sem conexão • mantendo dados locais';renderSubjects();renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek());renderProgressStatus()}}
+syncPerformance.onclick=()=>sync();document.getElementById('copyProgress').onclick=copyProgressSnapshot;renderProgressStatus();renderSubjects();renderWeeks();renderOverview();renderPerformance();renderDeepDive(currentWeek());sync();
 })();
 </script>
 </body>
 </html>
-<!-- public-build: redacoes=0; tutor=0; source=private-bacen -->
+<!-- public-build: redacoes=0; tutor=0; progresso=sim; source=private-bacen -->
 
-<!-- synced-from-bacen: d8199a4062638ce128c6c68bdd1346da02bca0b1 -->
+<!-- synced-from-bacen: aef63ffd92c2f751c41dbbdddcfac2726f608354 -->
