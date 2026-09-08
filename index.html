@@ -13,7 +13,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.42;letter-spacing:-.005em}
-button,input{font:inherit}
+button,input,select{font:inherit}
 a{color:inherit}
 .shell{max-width:1420px;margin:auto;padding:18px}
 .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:8px 0 18px;position:relative}
@@ -77,9 +77,9 @@ nav button.active{background:#fff;color:#111}
 .links{display:flex;gap:8px;flex-wrap:wrap}.method-link-button{display:inline-flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;border:1px solid rgba(25,25,25,.14);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(25,25,25,.035);font-size:10px;font-weight:500;transition:.18s ease}.method-link-button:hover{transform:translateY(-1px);background:#111;color:#fff;box-shadow:0 7px 18px rgba(25,25,25,.12)}.method-link-button span{font-size:9px;font-weight:400;font-style:italic;color:var(--muted)}.method-link-button:hover span{color:#ddd}
 .btn{border:1px solid var(--ink);background:#fff;color:var(--ink);padding:8px 11px;border-radius:11px;font-size:11px;font-weight:500;cursor:pointer}.btn.primary{background:var(--ink);color:#fff}
 .sync{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sync span{font-size:10px;font-weight:400;font-style:italic;color:var(--muted)}
-.footer{padding:22px 0;text-align:center;color:#8d8a81;font-size:10px;font-weight:400;font-style:italic}
-@media(max-width:1000px){.g4,.g3,.g2,.g21{grid-template-columns:1fr 1fr}.subjects,.weeks{grid-template-columns:1fr}.overview-strip{grid-template-columns:repeat(2,1fr)}.overview-stat:nth-child(3){border-left:0;padding-left:0;margin-top:16px}.overview-stat:nth-child(4){margin-top:16px}.current-study-grid{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);text-align:center}}
-@media(max-width:650px){.shell{padding:10px}.topbar{grid-template-columns:1fr}.brand,.topmeta{display:none}nav{justify-self:center;max-width:100%;overflow:auto}.g4,.g3,.g2,.g21,.alloc,.links,.current-study-grid{grid-template-columns:1fr}.overview-strip{grid-template-columns:1fr}.overview-stat,.overview-stat:not(:first-child),.overview-stat:nth-child(3),.overview-stat:nth-child(4){padding:10px 0;border-left:0;border-bottom:1px solid var(--line);margin-top:0}.alloc div+div{padding-left:0;border-left:0}.current-study-head{flex-direction:column}.arch-row{grid-template-columns:1fr 55px 70px}}
+.deep-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.deep-select{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:11px}.deep-hero{display:grid;grid-template-columns:1.45fr .55fr;gap:12px}.deep-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.deep-meta .card{min-height:108px}.deep-meta small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}.deep-meta strong{font-size:15px;font-weight:500;line-height:1.25}.deep-subject{padding:14px 0;border-bottom:1px solid var(--line)}.deep-subject:last-child{border-bottom:0}.deep-subject-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.deep-subject-head h3{margin:0;font-size:14px;font-weight:500}.deep-subject-head p{margin:4px 0 0;color:var(--muted);font-size:11px;font-style:italic}.deep-actions{display:flex;gap:7px;flex-wrap:wrap}.asset-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid rgba(25,25,25,.14);border-radius:999px;padding:7px 10px;background:#fff;font-size:10px;font-weight:500}.asset-link:hover{background:#111;color:#fff}.asset-link.disabled{opacity:.45;pointer-events:none}.question-preview{margin-top:11px;border-top:1px dashed #d9d6cb;padding-top:9px}.question-card{padding:10px 0;border-bottom:1px dashed #e3dfd6}.question-card:last-child{border-bottom:0}.question-card b{display:block;font-size:11px;font-weight:500;margin-bottom:4px}.question-card p{margin:0;font-size:11px;line-height:1.5}.question-source{margin-top:4px!important;color:var(--muted);font-style:italic;font-size:10px!important}.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sim-asset{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.sim-asset b{display:block;font-size:13px;font-weight:500;margin-bottom:5px}.sim-asset p{margin:0 0 10px;color:var(--muted);font-size:11px;font-style:italic}.footer{padding:22px 0;text-align:center;color:#8d8a81;font-size:10px;font-weight:400;font-style:italic}
+@media(max-width:1000px){.g4,.g3,.g2,.g21{grid-template-columns:1fr 1fr}.subjects,.weeks{grid-template-columns:1fr}.overview-strip{grid-template-columns:repeat(2,1fr)}.overview-stat:nth-child(3){border-left:0;padding-left:0;margin-top:16px}.overview-stat:nth-child(4){margin-top:16px}.current-study-grid{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);text-align:center}.deep-hero{grid-template-columns:1fr}.deep-meta{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.shell{padding:10px}.topbar{grid-template-columns:1fr}.brand,.topmeta{display:none}nav{justify-self:center;max-width:100%;overflow:auto}.g4,.g3,.g2,.g21,.alloc,.links,.current-study-grid,.deep-meta,.sim-grid{grid-template-columns:1fr}.overview-strip{grid-template-columns:1fr}.overview-stat,.overview-stat:not(:first-child),.overview-stat:nth-child(3),.overview-stat:nth-child(4){padding:10px 0;border-left:0;border-bottom:1px solid var(--line);margin-top:0}.alloc div+div{padding-left:0;border-left:0}.current-study-head{flex-direction:column}.arch-row{grid-template-columns:1fr 55px 70px}.deep-subject-head{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -88,6 +88,7 @@ nav button.active{background:#fff;color:#111}
     <div class="brand">BACEN <i>destination</i></div>
     <nav>
       <button class="active" data-tab="overview">Visão geral</button>
+      <button data-tab="deepdive">Caderno da semana</button>
       <button data-tab="syllabus">Mapa do edital</button>
       <button data-tab="weeks">Semanas</button>
       <button data-tab="performance">Desempenho</button>
@@ -109,131 +110,59 @@ nav button.active{background:#fff;color:#111}
 
     <div class="current-study">
       <div class="current-study-head">
-        <div>
-          <div class="kicker">Status atual</div>
-          <div class="current-study-title"><strong id="heroStatus">Semana 01</strong><span id="heroSub">Fundação</span></div>
-        </div>
+        <div><div class="kicker">Status atual</div><div class="current-study-title"><strong id="heroStatus">Semana 01</strong><span id="heroSub">Fundação</span></div></div>
         <div class="status-pill">PLANO DA SEMANA</div>
       </div>
       <div class="current-study-grid" id="currentStudyGrid"></div>
     </div>
 
-    <div class="premium-card">
-      <div class="section-head"><h2>Carga semanal recalculável</h2><p>Pesos, não dias fixos.</p></div>
-      <div class="load-panel">
-        <input class="range" id="hoursRange" type="range" min="6" max="12" value="10">
-        <div class="alloc">
-          <div><strong id="basicHours">6h</strong><small>60% • Conhecimentos básicos</small></div>
-          <div><strong id="techHours">2h</strong><small>20% • Tecnologia</small></div>
-          <div><strong id="writingHours">2h</strong><small>20% • Redação e discursivas</small></div>
+    <div class="premium-card"><div class="section-head"><h2>Carga semanal recalculável</h2><p>Pesos, não dias fixos.</p></div><div class="load-panel"><input class="range" id="hoursRange" type="range" min="6" max="12" value="10"><div class="alloc"><div><strong id="basicHours">6h</strong><small>60% • Conhecimentos básicos</small></div><div><strong id="techHours">2h</strong><small>20% • Tecnologia</small></div><div><strong id="writingHours">2h</strong><small>20% • Redação e discursivas</small></div></div></div></div>
+
+    <div class="premium-card"><div class="section-head"><h2>Estratégia adaptativa</h2><p>Fluxo de estudo + acesso aos agentes.</p></div><div class="strategy-row"><div class="strategy"><span>estudar</span><b>→</b><span>testar</span><b>→</b><span>diagnosticar</span><b>→</b><span>reforçar</span><b>→</b><span>recalcular</span></div><div class="agent-buttons"><a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank">Agente de Redação ↗</a><a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-tutor.md" target="_blank">Tutor IA ↗</a></div></div></div>
+
+    <div class="premium-card"><div class="section-head"><h2>Arquitetura da objetiva</h2><p>Peso por disciplina na referência BACEN 2024.</p></div><div class="architecture" id="examArchitecture"></div></div>
+    <div class="section-head"><h2>Redações realizadas</h2><p>Histórico resumido.</p></div><div id="writingHistory"><div class="empty">Nenhuma redação registrada ainda.</div></div>
+  </section>
+
+  <section class="view" id="deepdive">
+    <div class="section-head"><div><div class="kicker">Deep dive</div><h2>Caderno da semana</h2></div><div class="deep-toolbar"><span>Semana</span><select id="deepWeekSelect" class="deep-select"></select></div></div>
+    <div class="deep-hero">
+      <div class="premium-card">
+        <div class="current-study-title"><strong id="deepWeekTitle">Semana 01</strong><span id="deepWeekSubtitle">Fundação</span></div>
+        <div class="deep-meta">
+          <div class="card"><small>Redação</small><strong id="deepWriting">A definir</strong><span id="deepWritingMeta">Tema semanal pelo Agente de Redação.</span></div>
+          <div class="card"><small>Documento da semana</small><strong id="deepDocLabel">semana-01.md</strong><div style="margin-top:9px"><a id="deepDocLink" class="asset-link" target="_blank">Abrir apoio ↗</a></div></div>
+          <div class="card"><small>Kaizen</small><strong id="deepKaizen">Baseline por questões sentinela</strong><span>Melhoria concreta do ciclo.</span></div>
         </div>
       </div>
-    </div>
-
-    <div class="premium-card">
-      <div class="section-head"><h2>Estratégia adaptativa</h2><p>Fluxo de estudo + acesso aos agentes.</p></div>
-      <div class="strategy-row">
-        <div class="strategy"><span>estudar</span><b>→</b><span>testar</span><b>→</b><span>diagnosticar</span><b>→</b><span>reforçar</span><b>→</b><span>recalcular</span></div>
-        <div class="agent-buttons">
-          <a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank">Agente de Redação ↗</a>
-          <a class="agent-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/tutor.json" target="_blank">Tutor IA ↗</a>
-        </div>
+      <div class="premium-card">
+        <div class="section-head"><h2>Simulado cumulativo</h2><p>60 + 5 reforço.</p></div>
+        <div class="sim-grid"><div class="sim-asset"><b>Simulado</b><p>60 questões regulares cumulativas + 5 extras de reforço.</p><a id="deepSimLink" class="asset-link" target="_blank">Abrir PDF ↗</a></div><div class="sim-asset"><b>Gabarito comentado</b><p>Gabarito + comentários, liberado após envio das respostas.</p><a id="deepGabLink" class="asset-link" target="_blank">Abrir PDF ↗</a></div></div>
       </div>
     </div>
-
-    <div class="premium-card">
-      <div class="section-head"><h2>Arquitetura da objetiva</h2><p>Peso por disciplina na referência BACEN 2024.</p></div>
-      <div class="architecture" id="examArchitecture"></div>
-    </div>
-
-    <div class="section-head"><h2>Redações realizadas</h2><p>Histórico resumido.</p></div>
-    <div id="writingHistory"><div class="empty">Nenhuma redação registrada ainda.</div></div>
+    <div class="premium-card"><div class="section-head"><h2>Conteúdo e banco de questões</h2><p>3 questões por microconteúdo • sem gabarito antes da tentativa.</p></div><div id="deepSubjects"></div></div>
   </section>
 
-  <section class="view" id="syllabus">
-    <div class="section-head"><div><div class="kicker">Cobertura</div><h2>Mapa do edital 2024</h2></div><p>Marque um microtema quando conseguir explicar e resolver questão equivalente.</p></div>
-    <div class="subjects" id="subjectGrid"></div>
-  </section>
-
-  <section class="view" id="weeks">
-    <div class="section-head"><div><div class="kicker">Cronograma contínuo</div><h2>17 semanas de domínio</h2></div><p>Sem dias fixos. A conclusão da semana é registrada pelo checkbox.</p></div>
-    <div class="weeks" id="weeksGrid"></div>
-  </section>
+  <section class="view" id="syllabus"><div class="section-head"><div><div class="kicker">Cobertura</div><h2>Mapa do edital 2024</h2></div><p>Marque um microtema quando conseguir explicar e resolver questão equivalente.</p></div><div class="subjects" id="subjectGrid"></div></section>
+  <section class="view" id="weeks"><div class="section-head"><div><div class="kicker">Cronograma contínuo</div><h2>17 semanas de domínio</h2></div><p>Sem dias fixos. A conclusão da semana é registrada pelo checkbox.</p></div><div class="weeks" id="weeksGrid"></div></section>
 
   <section class="view" id="performance">
     <div class="section-head"><div><div class="kicker">Central</div><h2>Desempenho</h2></div><div class="sync"><button class="btn primary" id="syncPerformance">Sincronizar agentes</button><span id="syncStatus">dados locais + GitHub</span></div></div>
-    <div class="grid g4">
-      <div class="card metric"><small>Último diagnóstico</small><strong id="dWeek" style="font-size:20px">—</strong><span id="dDiagnosis">Ainda sem avaliação do Tutor.</span></div>
-      <div class="card metric attn"><small>Reforço prioritário</small><strong id="dReinforce" style="font-size:19px">—</strong><span>Derivado das dificuldades registradas.</span></div>
-      <div class="card metric"><small>Último simulado/prova</small><strong id="dSim" style="font-size:20px">—</strong><span id="dSimMeta">Nenhum resultado registrado.</span></div>
-      <div class="card metric writing"><small>Última redação</small><strong id="dWriting" style="font-size:20px">—</strong><span id="dWritingMeta">Nenhuma correção registrada.</span></div>
-    </div>
-
-    <div class="grid g2">
-      <div>
-        <div class="section-head"><h2>Matérias com maior dificuldade</h2></div>
-        <div class="card"><div class="attention-list" id="difficultyList"><div class="empty">O Tutor ainda não registrou dificuldades.</div></div></div>
-      </div>
-      <div>
-        <div class="section-head"><h2>Plano de reforço</h2></div>
-        <div class="card"><div class="attention-list" id="reinforceList"><div class="empty">Aguardando próxima avaliação do Tutor.</div></div></div>
-      </div>
-    </div>
-
-    <div class="section-head"><h2>Simulados e provas</h2><p>Resultados informados ao Tutor.</p></div>
-    <div class="table-wrap"><table><thead><tr><th>Data</th><th>Prova / simulado</th><th>Acertos</th><th>Total</th><th>%</th><th>Observação</th></tr></thead><tbody id="simTable"></tbody></table></div>
-
-    <div class="section-head"><h2>Redações</h2><p>Notas Cebraspe e Cesgranrio registradas pelo Agente de Redação.</p></div>
-    <div class="table-wrap"><table><thead><tr><th>Semana</th><th>Tema</th><th>Status</th><th>Cebraspe</th><th>Cesgranrio</th><th>Foco seguinte</th></tr></thead><tbody id="redTable"></tbody></table></div>
+    <div class="grid g4"><div class="card metric"><small>Último diagnóstico</small><strong id="dWeek" style="font-size:20px">—</strong><span id="dDiagnosis">Ainda sem avaliação do Tutor.</span></div><div class="card metric attn"><small>Reforço prioritário</small><strong id="dReinforce" style="font-size:19px">—</strong><span>Derivado das dificuldades registradas.</span></div><div class="card metric"><small>Último simulado/prova</small><strong id="dSim" style="font-size:20px">—</strong><span id="dSimMeta">Nenhum resultado registrado.</span></div><div class="card metric writing"><small>Última redação</small><strong id="dWriting" style="font-size:20px">—</strong><span id="dWritingMeta">Nenhuma correção registrada.</span></div></div>
+    <div class="grid g2"><div><div class="section-head"><h2>Matérias com maior dificuldade</h2></div><div class="card"><div class="attention-list" id="difficultyList"><div class="empty">O Tutor ainda não registrou dificuldades.</div></div></div></div><div><div class="section-head"><h2>Plano de reforço</h2></div><div class="card"><div class="attention-list" id="reinforceList"><div class="empty">Aguardando próxima avaliação do Tutor.</div></div></div></div></div>
+    <div class="section-head"><h2>Simulados e provas</h2><p>Resultados informados ao Tutor.</p></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Prova / simulado</th><th>Acertos</th><th>Total</th><th>%</th><th>Observação</th></tr></thead><tbody id="simTable"></tbody></table></div>
+    <div class="section-head"><h2>Redações</h2><p>Notas Cebraspe e Cesgranrio registradas pelo Agente de Redação.</p></div><div class="table-wrap"><table><thead><tr><th>Semana</th><th>Tema</th><th>Status</th><th>Cebraspe</th><th>Cesgranrio</th><th>Foco seguinte</th></tr></thead><tbody id="redTable"></tbody></table></div>
   </section>
 
   <section class="view" id="method">
     <div class="section-head"><div><div class="kicker">Sistema de estudo</div><h2>Metodologia</h2></div><p>Como o projeto transforma estudo em diagnóstico e ajuste.</p></div>
-    <div class="card">
-      <div class="flow">
-        <div class="node"><strong>Chat</strong><span>planeja a sessão</span></div><div class="arrow">→</div>
-        <div class="node"><strong>Estudo</strong><span>conteúdo + prática</span></div><div class="arrow">→</div>
-        <div class="node"><strong>Agentes</strong><span>avaliam e estruturam</span></div><div class="arrow">→</div>
-        <div class="node"><strong>GitHub</strong><span>persiste os dados</span></div><div class="arrow">→</div>
-        <div class="node"><strong>Destination</strong><span>mostra o progresso</span></div>
-      </div>
-    </div>
-
-    <div class="section-head"><h2>Fluxo metodológico</h2></div>
-    <div class="grid g4">
-      <div class="card method-step"><div class="n">01</div><h3>Baseline</h3><p>Questões e exercícios revelam o nível atual antes de aprofundar o conteúdo.</p></div>
-      <div class="card method-step"><div class="n">02</div><h3>Sequence</h3><p>O cronograma define a próxima sequência de conteúdos, sem amarrar dias da semana.</p></div>
-      <div class="card method-step"><div class="n">03</div><h3>Diagnóstico</h3><p>O Tutor identifica lacunas, padrões de erro e disciplinas que merecem reforço.</p></div>
-      <div class="card method-step"><div class="n">04</div><h3>Kaizen</h3><p>O ciclo é recalculado com base no desempenho; o erro precisa virar regra aprendida.</p></div>
-    </div>
-
-    <div class="grid g2">
-      <div>
-        <div class="section-head"><h2>Responsabilidades</h2></div>
-        <div class="card">
-          <p><b>Lud</b> informa fatos: horas, conteúdos estudados, dificuldades percebidas, simulados/provas e resultados.</p>
-          <p><b>Tutor IA</b> interpreta: diagnóstico, lacunas, prioridade de reforço, próxima Sequence e Cut List. Não sobrescreve dado factual.</p>
-          <p><b>Agente de Redação</b> escolhe/registra o tema semanal, orienta o planejamento, corrige pelas bancas e grava notas em <code>dados/redacoes.json</code>.</p>
-          <p><b>Destination</b> não avalia; ele consolida e visualiza o que os agentes registram.</p>
-        </div>
-      </div>
-      <div>
-        <div class="section-head"><h2>Links importantes</h2></div>
-        <div class="links">
-          <a class="method-link-button" href="https://github.com/ludmil4/BACEN" target="_blank"><b>Repositório BACEN</b><span>estrutura completa do projeto ↗</span></a>
-          <a class="method-link-button" href="https://github.com/ludmil4/BACEN/tree/main/provas" target="_blank"><b>Biblioteca de provas</b><span>corpus de treino ↗</span></a>
-          <a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank"><b>Agente de Redação</b><span>documentação ↗</span></a>
-          <a class="method-link-button" href="https://www.cebraspe.org.br/concursos/bcb_24" target="_blank"><b>Edital BCB 2024</b><span>referência oficial ↗</span></a>
-          <a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/redacoes.json" target="_blank"><b>Dados de redação</b><span>histórico do agente ↗</span></a>
-          <a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/tutor.json" target="_blank"><b>Dados do Tutor</b><span>diagnóstico e reforço ↗</span></a>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="flow"><div class="node"><strong>Chat</strong><span>planeja a sessão</span></div><div class="arrow">→</div><div class="node"><strong>Estudo</strong><span>conteúdo + prática</span></div><div class="arrow">→</div><div class="node"><strong>Agentes</strong><span>avaliam e estruturam</span></div><div class="arrow">→</div><div class="node"><strong>GitHub</strong><span>persiste os dados</span></div><div class="arrow">→</div><div class="node"><strong>Destination</strong><span>mostra o progresso</span></div></div></div>
+    <div class="section-head"><h2>Fluxo metodológico</h2></div><div class="grid g4"><div class="card method-step"><div class="n">01</div><h3>Baseline</h3><p>Questões e exercícios revelam o nível atual antes de aprofundar o conteúdo.</p></div><div class="card method-step"><div class="n">02</div><h3>Sequence</h3><p>O cronograma define a próxima sequência de conteúdos, sem amarrar dias da semana.</p></div><div class="card method-step"><div class="n">03</div><h3>Diagnóstico</h3><p>O Tutor identifica lacunas, padrões de erro e disciplinas que merecem reforço.</p></div><div class="card method-step"><div class="n">04</div><h3>Kaizen</h3><p>O ciclo é recalculado com base no desempenho; o erro precisa virar regra aprendida.</p></div></div>
+    <div class="grid g2"><div><div class="section-head"><h2>Responsabilidades</h2></div><div class="card"><p><b>Lud</b> informa fatos: horas, conteúdos estudados, dificuldades percebidas, simulados/provas e resultados.</p><p><b>Tutor IA</b> ensina, seleciona questões, corrige, diagnostica, gera simulados, prioriza reforço, próxima Sequence e Cut List. Não sobrescreve dado factual.</p><p><b>Agente de Redação</b> escolhe/registra o tema semanal, orienta o planejamento, corrige pelas bancas e grava notas em <code>dados/redacoes.json</code>.</p><p><b>Destination</b> consolida e visualiza o que deve aparecer à candidata; sua alteração é o gatilho da publicação.</p></div></div><div><div class="section-head"><h2>Links importantes</h2></div><div class="links"><a class="method-link-button" href="https://github.com/ludmil4/BACEN" target="_blank"><b>Repositório BACEN</b><span>estrutura completa do projeto ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/tree/main/provas/concursos" target="_blank"><b>Biblioteca de provas</b><span>corpus de treino ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-redacao.md" target="_blank"><b>Agente de Redação</b><span>documentação ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/metodologia/agentes/agente-tutor.md" target="_blank"><b>Agente Tutor</b><span>documentação ↗</span></a><a class="method-link-button" href="https://www.cebraspe.org.br/concursos/bcb_24" target="_blank"><b>Edital BCB 2024</b><span>referência oficial ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/redacoes.json" target="_blank"><b>Dados de redação</b><span>histórico do agente ↗</span></a><a class="method-link-button" href="https://github.com/ludmil4/BACEN/blob/main/dados/tutor.json" target="_blank"><b>Dados do Tutor</b><span>diagnóstico e reforço ↗</span></a></div></div></div>
   </section>
 
   <div class="footer">BACEN destination • estudo → diagnóstico → persistência → visualização</div>
 </div>
-
 <script>
 (()=>{
 const STORE='bacenDestinationV3';
@@ -241,18 +170,11 @@ const legacy=JSON.parse(localStorage.getItem('bacenDestinationV2')||localStorage
 const S=JSON.parse(localStorage.getItem(STORE)||'null')||legacy||{topics:{},weeks:{},hours:10};
 S.topics=S.topics||{};S.weeks=S.weeks||{};S.hours=S.hours||10;
 const save=()=>localStorage.setItem(STORE,JSON.stringify(S));
-const URLS={
- redacoes:'https://raw.githubusercontent.com/ludmil4/BACEN/main/dados/redacoes.json',
- tutor:'https://raw.githubusercontent.com/ludmil4/BACEN/main/dados/tutor.json'
-};
-let remote={redacoes:[],tutor:[]};
-
-const exam=[
- ['Língua Portuguesa',25,'#102D0E'],['Lógica e Estatística',10,'#DD4517'],['Direito Administrativo',5,'#DB7519'],
- ['Macroeconomia',5,'#ED9043'],['Microeconomia',5,'#F9B480'],['Engenharia de Software',24,'#FFAA00'],
- ['Infraestrutura em TI',17,'#102D0E'],['Ciência de Dados',14,'#DD4517'],['Segurança da Informação',7,'#DB7519'],
- ['Bancos de Dados',4,'#ED9043'],['Gestão em TI',4,'#F9B480']
-];
+const URLS={redacoes:null,tutor:null};
+let remote={"redacoes":[],"tutor":[]};
+const PUBLIC_EMBEDDED_DATA=true;
+const ROOT='https://github.com/ludmil4/BACEN/blob/main/';
+const exam=[['Língua Portuguesa',25,'#102D0E'],['Lógica e Estatística',10,'#DD4517'],['Direito Administrativo',5,'#DB7519'],['Macroeconomia',5,'#ED9043'],['Microeconomia',5,'#F9B480'],['Engenharia de Software',24,'#FFAA00'],['Infraestrutura em TI',17,'#102D0E'],['Ciência de Dados',14,'#DD4517'],['Segurança da Informação',7,'#DB7519'],['Bancos de Dados',4,'#ED9043'],['Gestão em TI',4,'#F9B480']];
 const subjects={
 'Língua Portuguesa':{g:'Básicos',n:25,t:['Compreensão e interpretação de textos','Tipos e gêneros textuais','Ortografia oficial','Coesão e conectores','Tempos e modos verbais','Classes de palavras','Coordenação e subordinação','Pontuação','Concordância verbal e nominal','Regência verbal e nominal','Crase','Colocação pronominal','Significação das palavras','Reescrita e níveis de formalidade']},
 'Lógica e Estatística':{g:'Básicos',n:10,t:['Estruturas lógicas','Argumentação, inferência e dedução','Proposições simples e compostas','Tabelas-verdade','Equivalências e Leis de Morgan','População e amostra','Histogramas e curvas de frequência','Média, moda, mediana e separatrizes','Medidas de dispersão','Probabilidade condicional e independência','Variável aleatória e distribuições']},
@@ -285,279 +207,60 @@ const weeks=[
 {title:'Consolidação 2',subjects:['Língua Portuguesa','Lógica e Estatística','Direito Administrativo','Macroeconomia','Microeconomia','Engenharia de Software','Infraestrutura em TI','Ciência de Dados','Segurança da Informação','Bancos de Dados','Gestão em TI'],focus:'Questões cumulativas e escrita',writing:'P4 TI',kaizen:'Revisar escrita e conteúdo'},
 {title:'Marco janeiro',subjects:['Língua Portuguesa','Lógica e Estatística','Direito Administrativo','Macroeconomia','Microeconomia','Engenharia de Software','Infraestrutura em TI','Ciência de Dados','Segurança da Informação','Bancos de Dados','Gestão em TI'],focus:'Cobertura final + lacunas',writing:'P3/P4 conforme maior fraqueza',kaizen:'Migrar da fase de domínio para performance'}
 ];
-
 const weekDetails=[
-{
- 'Língua Portuguesa':'Compreensão e interpretação de textos; coesão e reescrita.',
- 'Lógica e Estatística':'Estruturas lógicas, proposições e leitura de dados.',
- 'Direito Administrativo':'Princípios, organização administrativa e noções de atos.',
- 'Macroeconomia':'Contas nacionais e agregados fundamentais.',
- 'Microeconomia':'Oferta, demanda, preços e equilíbrio de mercado.',
- 'Engenharia de Software':'Arquitetura de software, HTTP e fundamentos de comunicação.'
-},
-{
- 'Lógica e Estatística':'Estatística descritiva, média, mediana e dispersão.',
- 'Direito Administrativo':'Ato administrativo: elementos, atributos e controle.',
- 'Macroeconomia':'Moeda, agregados monetários e multiplicador.',
- 'Microeconomia':'Teoria do consumidor e restrição orçamentária.',
- 'Engenharia de Software':'APIs, REST e fundamentos de testes.'
-},
-{
- 'Língua Portuguesa':'Interpretação, relações semânticas e conectores.',
- 'Lógica e Estatística':'Probabilidade e leitura de eventos.',
- 'Direito Administrativo':'Atos, poderes e serviços públicos.',
- 'Macroeconomia':'Objetivos, instrumentos e transmissão da política monetária.',
- 'Infraestrutura em TI':'Linux, Windows Server e fundamentos de redes.'
-},
-{
- 'Lógica e Estatística':'Probabilidade aplicada e revisão de estatística.',
- 'Direito Administrativo':'Servidores públicos e responsabilidades.',
- 'Macroeconomia':'Curva de Phillips, expectativas e regime de metas.',
- 'Microeconomia':'Teoria da firma e custos.',
- 'Infraestrutura em TI':'Cloud, virtualização e continuidade.'
-},
-{
- 'Língua Portuguesa':'Reescrita, coesão e precisão textual.',
- 'Lógica e Estatística':'Revisão dos erros quantitativos mais frequentes.',
- 'Macroeconomia':'Política fiscal, setor externo, câmbio e balanço de pagamentos.',
- 'Ciência de Dados':'Fundamentos de dados, qualidade e tipos de aprendizado.'
-},
-{
- 'Direito Administrativo':'Revisão aplicada dos pontos de maior erro.',
- 'Microeconomia':'Teoria dos jogos, falhas de mercado e informação assimétrica.',
- 'Ciência de Dados':'Aprendizado supervisionado, não supervisionado e avaliação.'
-},
-{
- 'Macroeconomia':'Política macroprudencial e estabilidade financeira.',
- 'Língua Portuguesa':'Interpretação e revisão gramatical dirigida.',
- 'Lógica e Estatística':'Questões mistas para reforço de base.',
- 'Segurança da Informação':'Autenticação, autorização, ameaças e controles.'
-},
-{
- 'Língua Portuguesa':'Coesão, pontuação e reescrita.',
- 'Lógica e Estatística':'Probabilidade e lógica aplicada.',
- 'Microeconomia':'Consumidor, firma e elasticidades.',
- 'Segurança da Informação':'IAM, criptografia, segurança web e MFA.'
-},
-{
- 'Macroeconomia':'Modelos de crescimento, ciclos e mercado de trabalho.',
- 'Bancos de Dados':'Modelo relacional, SQL, normalização e transações.'
-},
-{
- 'Microeconomia':'Concorrência, concentração e organização industrial.',
- 'Gestão em TI':'Governança, ITIL, projetos, Scrum e Kanban.'
-},
-{
- 'Língua Portuguesa':'Questões mistas dos tópicos já estudados.',
- 'Lógica e Estatística':'Questões cumulativas e correção de padrões de erro.',
- 'Direito Administrativo':'Revisão cumulativa por incidência.',
- 'Macroeconomia':'Integração dos principais modelos e políticas.',
- 'Microeconomia':'Integração consumidor, firma e mercados.',
- 'Engenharia de Software':'Recuperação de arquitetura, APIs e testes.',
- 'Infraestrutura em TI':'Recuperação de redes, sistemas e cloud.'
-},
-{
- 'Macroeconomia':'Questões integradas de política monetária, fiscal e setor externo.',
- 'Microeconomia':'Questões integradas e diferenciação entre conceitos próximos.',
- 'Ciência de Dados':'Recuperação de ML, IA generativa e governança.',
- 'Segurança da Informação':'Recuperação de IAM, criptografia e segurança web.'
-},
-{
- 'Língua Portuguesa':'Aprofundar os microtemas com menor domínio.',
- 'Lógica e Estatística':'Aprofundar os tipos de questão com maior erro.',
- 'Direito Administrativo':'Aprofundamento orientado pelo diagnóstico.',
- 'Macroeconomia':'Aprofundar modelos e relações mais frágeis.',
- 'Microeconomia':'Aprofundar teoria e aplicações mais frágeis.',
- 'Engenharia de Software':'Aprofundar os tópicos de maior incidência e erro.',
- 'Infraestrutura em TI':'Aprofundar lacunas priorizadas pelo Tutor.',
- 'Ciência de Dados':'Aprofundar lacunas priorizadas pelo Tutor.',
- 'Segurança da Informação':'Aprofundar lacunas priorizadas pelo Tutor.',
- 'Bancos de Dados':'Revisão orientada pelo desempenho.',
- 'Gestão em TI':'Revisão orientada pelo desempenho.'
-},
-{
- 'Língua Portuguesa':'Recuperação direcionada pelos erros recorrentes.',
- 'Lógica e Estatística':'Recuperação direcionada pelos erros recorrentes.',
- 'Direito Administrativo':'Recuperação direcionada pelos erros recorrentes.',
- 'Macroeconomia':'Recuperação direcionada pelos erros recorrentes.',
- 'Microeconomia':'Recuperação direcionada pelos erros recorrentes.',
- 'Engenharia de Software':'Recuperação direcionada pelos erros recorrentes.',
- 'Infraestrutura em TI':'Recuperação direcionada pelos erros recorrentes.',
- 'Ciência de Dados':'Recuperação direcionada pelos erros recorrentes.',
- 'Segurança da Informação':'Recuperação direcionada pelos erros recorrentes.',
- 'Bancos de Dados':'Recuperação direcionada pelos erros recorrentes.',
- 'Gestão em TI':'Recuperação direcionada pelos erros recorrentes.'
-},
-{
- 'Língua Portuguesa':'Questões cumulativas e estabilização do desempenho.',
- 'Lógica e Estatística':'Questões cumulativas e estabilização do desempenho.',
- 'Direito Administrativo':'Questões cumulativas e estabilização do desempenho.',
- 'Macroeconomia':'Questões cumulativas e estabilização do desempenho.',
- 'Microeconomia':'Questões cumulativas e estabilização do desempenho.',
- 'Engenharia de Software':'Questões cumulativas e estabilização do desempenho.',
- 'Infraestrutura em TI':'Questões cumulativas e estabilização do desempenho.',
- 'Ciência de Dados':'Questões cumulativas e estabilização do desempenho.',
- 'Segurança da Informação':'Questões cumulativas e estabilização do desempenho.',
- 'Bancos de Dados':'Questões cumulativas e estabilização do desempenho.',
- 'Gestão em TI':'Questões cumulativas e estabilização do desempenho.'
-},
-{
- 'Língua Portuguesa':'Consolidação final e revisão da escrita.',
- 'Lógica e Estatística':'Consolidação final com questões mistas.',
- 'Direito Administrativo':'Consolidação final dos tópicos recorrentes.',
- 'Macroeconomia':'Consolidação final dos principais modelos.',
- 'Microeconomia':'Consolidação final dos principais modelos.',
- 'Engenharia de Software':'Consolidação final e revisão de erros.',
- 'Infraestrutura em TI':'Consolidação final e revisão de erros.',
- 'Ciência de Dados':'Consolidação final e revisão de erros.',
- 'Segurança da Informação':'Consolidação final e revisão de erros.',
- 'Bancos de Dados':'Consolidação final e revisão de erros.',
- 'Gestão em TI':'Consolidação final e revisão de erros.'
-},
-{
- 'Língua Portuguesa':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Lógica e Estatística':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Direito Administrativo':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Macroeconomia':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Microeconomia':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Engenharia de Software':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Infraestrutura em TI':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Ciência de Dados':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Segurança da Informação':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Bancos de Dados':'Fechar lacunas remanescentes e revisar pontos críticos.',
- 'Gestão em TI':'Fechar lacunas remanescentes e revisar pontos críticos.'
-}
+{'Língua Portuguesa':'Compreensão e interpretação de textos; coesão e reescrita.','Lógica e Estatística':'Estruturas lógicas, proposições e leitura de dados.','Direito Administrativo':'Princípios, organização administrativa e noções de atos.','Macroeconomia':'Contas nacionais e agregados fundamentais.','Microeconomia':'Oferta, demanda, preços e equilíbrio de mercado.','Engenharia de Software':'Arquitetura de software, HTTP e fundamentos de comunicação.'},
+{'Lógica e Estatística':'Estatística descritiva, média, mediana e dispersão.','Direito Administrativo':'Ato administrativo: elementos, atributos e controle.','Macroeconomia':'Moeda, agregados monetários e multiplicador.','Microeconomia':'Teoria do consumidor e restrição orçamentária.','Engenharia de Software':'APIs, REST e fundamentos de testes.'},
+{'Língua Portuguesa':'Interpretação, relações semânticas e conectores.','Lógica e Estatística':'Probabilidade e leitura de eventos.','Direito Administrativo':'Atos, poderes e serviços públicos.','Macroeconomia':'Objetivos, instrumentos e transmissão da política monetária.','Infraestrutura em TI':'Linux, Windows Server e fundamentos de redes.'},
+{'Lógica e Estatística':'Probabilidade aplicada e revisão de estatística.','Direito Administrativo':'Servidores públicos e responsabilidades.','Macroeconomia':'Curva de Phillips, expectativas e regime de metas.','Microeconomia':'Teoria da firma e custos.','Infraestrutura em TI':'Cloud, virtualização e continuidade.'},
+{'Língua Portuguesa':'Reescrita, coesão e precisão textual.','Lógica e Estatística':'Revisão dos erros quantitativos mais frequentes.','Macroeconomia':'Política fiscal, setor externo, câmbio e balanço de pagamentos.','Ciência de Dados':'Fundamentos de dados, qualidade e tipos de aprendizado.'},
+{'Direito Administrativo':'Revisão aplicada dos pontos de maior erro.','Microeconomia':'Teoria dos jogos, falhas de mercado e informação assimétrica.','Ciência de Dados':'Aprendizado supervisionado, não supervisionado e avaliação.'},
+{'Macroeconomia':'Política macroprudencial e estabilidade financeira.','Língua Portuguesa':'Interpretação e revisão gramatical dirigida.','Lógica e Estatística':'Questões mistas para reforço de base.','Segurança da Informação':'Autenticação, autorização, ameaças e controles.'},
+{'Língua Portuguesa':'Coesão, pontuação e reescrita.','Lógica e Estatística':'Probabilidade e lógica aplicada.','Microeconomia':'Consumidor, firma e elasticidades.','Segurança da Informação':'IAM, criptografia, segurança web e MFA.'},
+{'Macroeconomia':'Modelos de crescimento, ciclos e mercado de trabalho.','Bancos de Dados':'Modelo relacional, SQL, normalização e transações.'},
+{'Microeconomia':'Concorrência, concentração e organização industrial.','Gestão em TI':'Governança, ITIL, projetos, Scrum e Kanban.'},
+{'Língua Portuguesa':'Questões mistas dos tópicos já estudados.','Lógica e Estatística':'Questões cumulativas e correção de padrões de erro.','Direito Administrativo':'Revisão cumulativa por incidência.','Macroeconomia':'Integração dos principais modelos e políticas.','Microeconomia':'Integração consumidor, firma e mercados.','Engenharia de Software':'Recuperação de arquitetura, APIs e testes.','Infraestrutura em TI':'Recuperação de redes, sistemas e cloud.'},
+{'Macroeconomia':'Questões integradas de política monetária, fiscal e setor externo.','Microeconomia':'Questões integradas e diferenciação entre conceitos próximos.','Ciência de Dados':'Recuperação de ML, IA generativa e governança.','Segurança da Informação':'Recuperação de IAM, criptografia e segurança web.'},
+{'Língua Portuguesa':'Aprofundar os microtemas com menor domínio.','Lógica e Estatística':'Aprofundar os tipos de questão com maior erro.','Direito Administrativo':'Aprofundamento orientado pelo diagnóstico.','Macroeconomia':'Aprofundar modelos e relações mais frágeis.','Microeconomia':'Aprofundar teoria e aplicações mais frágeis.','Engenharia de Software':'Aprofundar os tópicos de maior incidência e erro.','Infraestrutura em TI':'Aprofundar lacunas priorizadas pelo Tutor.','Ciência de Dados':'Aprofundar lacunas priorizadas pelo Tutor.','Segurança da Informação':'Aprofundar lacunas priorizadas pelo Tutor.','Bancos de Dados':'Revisão orientada pelo desempenho.','Gestão em TI':'Revisão orientada pelo desempenho.'},
+Object.fromEntries(['Língua Portuguesa','Lógica e Estatística','Direito Administrativo','Macroeconomia','Microeconomia','Engenharia de Software','Infraestrutura em TI','Ciência de Dados','Segurança da Informação','Bancos de Dados','Gestão em TI'].map(s=>[s,'Recuperação direcionada pelos erros recorrentes.'])),
+Object.fromEntries(['Língua Portuguesa','Lógica e Estatística','Direito Administrativo','Macroeconomia','Microeconomia','Engenharia de Software','Infraestrutura em TI','Ciência de Dados','Segurança da Informação','Bancos de Dados','Gestão em TI'].map(s=>[s,'Questões cumulativas e estabilização do desempenho.'])),
+{'Língua Portuguesa':'Consolidação final e revisão da escrita.','Lógica e Estatística':'Consolidação final com questões mistas.','Direito Administrativo':'Consolidação final dos tópicos recorrentes.','Macroeconomia':'Consolidação final dos principais modelos.','Microeconomia':'Consolidação final dos principais modelos.','Engenharia de Software':'Consolidação final e revisão de erros.','Infraestrutura em TI':'Consolidação final e revisão de erros.','Ciência de Dados':'Consolidação final e revisão de erros.','Segurança da Informação':'Consolidação final e revisão de erros.','Bancos de Dados':'Consolidação final e revisão de erros.','Gestão em TI':'Consolidação final e revisão de erros.'},
+Object.fromEntries(['Língua Portuguesa','Lógica e Estatística','Direito Administrativo','Macroeconomia','Microeconomia','Engenharia de Software','Infraestrutura em TI','Ciência de Dados','Segurança da Informação','Bancos de Dados','Gestão em TI'].map(s=>[s,'Fechar lacunas remanescentes e revisar pontos críticos.']))
 ];
-
+const weekQuestionBank={};
+const slug=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const key=(s,i)=>s+'::'+i;
 const fmt=h=>{let a=Math.floor(h),m=Math.round((h-a)*60);return m?`${a}h${m}`:`${a}h`};
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));
- document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===b.dataset.tab));
-});
-
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===b.dataset.tab));if(b.dataset.tab==='deepdive')renderDeepDive(+deepWeekSelect.value||currentWeek())});
 examArchitecture.innerHTML=exam.map(([n,q,c])=>`<div class="arch-row"><b><i class="arch-dot" style="background:${c}"></i>${n}</b><strong>${q} itens</strong><span>${(q/120*100).toFixed(1).replace('.',',')}%</span></div>`).join('');
-
-function updateHours(){let h=+hoursRange.value;S.hours=h;save();basicHours.textContent=fmt(h*.6);techHours.textContent=fmt(h*.2);writingHours.textContent=fmt(h*.2)}
-hoursRange.value=S.hours;hoursRange.oninput=updateHours;updateHours();
-
-function renderSubjects(){
- subjectGrid.innerHTML='';
- Object.entries(subjects).forEach(([name,x])=>{
-   let d=x.t.filter((_,i)=>S.topics[key(name,i)]).length;
-   let box=document.createElement('div');box.className='subject';
-   box.innerHTML=`<div class="subject-head"><div><div class="subject-title">${name}</div><div class="subject-meta">${x.g} • peso ${x.n}</div></div><b>${d}/${x.t.length}</b></div>`;
-   x.t.forEach((t,i)=>{
-     let deep=t.startsWith('★ '),k=key(name,i),r=document.createElement('div');r.className='topic '+(S.topics[k]?'done':'');
-     r.innerHTML=`<input type="checkbox" ${S.topics[k]?'checked':''}><label>${deep?t.slice(2):t}</label><span class="tag ${deep?'deep':''}">${deep?'aprofundamento':'microtema'}</span>`;
-     r.querySelector('input').onchange=e=>{S.topics[k]=e.target.checked;save();renderSubjects();renderOverview()};
-     box.appendChild(r);
-   });
-   subjectGrid.appendChild(box);
- });
-}
-function writingForWeek(i){
- let candidates=remote.redacoes.filter(r=>Number(r.week??r.semana??r.cronograma_etapa)===(i+1));
- return candidates[candidates.length-1]||null;
-}
-function renderWeeks(){
- weeksGrid.innerHTML='';
- weeks.forEach((w,i)=>{
-   let done=!!S.weeks[i+1],red=writingForWeek(i),theme=red?.tema||red?.theme||null;
-   let el=document.createElement('article');el.className='week '+(done?'completed':'');
-   el.innerHTML=`<div class="week-top"><div><div class="week-num">SEMANA ${String(i+1).padStart(2,'0')}</div><h3>${w.title}</h3></div><label class="week-status"><input class="week-check" type="checkbox" ${done?'checked':''}> concluída</label></div>
-   <div class="chips">${w.subjects.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
-   <div class="week-block"><b>Foco</b>${w.focus}</div>
-   <div class="week-block wr"><b>Redação</b>${theme?esc(theme):w.writing+' • tema ainda não registrado'}</div>
-   <div class="week-block"><b>Kaizen</b>${w.kaizen}</div>`;
-   el.querySelector('input').onchange=e=>{S.weeks[i+1]=e.target.checked;save();renderWeeks();renderOverview()};
-   weeksGrid.appendChild(el);
- });
-}
-function completedSubjectCount(){
- return Object.entries(subjects).filter(([n,x])=>x.t.every((_,i)=>S.topics[key(n,i)])).length;
-}
-function topicCoverage(){
- let t=0,d=0;Object.entries(subjects).forEach(([n,x])=>x.t.forEach((_,i)=>{t++;if(S.topics[key(n,i)])d++}));return t?Math.round(d/t*100):0;
-}
-function normalizeList(v){
- if(!v)return[];if(Array.isArray(v))return v;return String(v).split(/[;,•]/).map(x=>x.trim()).filter(Boolean);
-}
+function updateHours(){let h=+hoursRange.value;S.hours=h;save();basicHours.textContent=fmt(h*.6);techHours.textContent=fmt(h*.2);writingHours.textContent=fmt(h*.2)}hoursRange.value=S.hours;hoursRange.oninput=updateHours;updateHours();
+function renderSubjects(){subjectGrid.innerHTML='';Object.entries(subjects).forEach(([name,x])=>{let d=x.t.filter((_,i)=>S.topics[key(name,i)]).length;let box=document.createElement('div');box.className='subject';box.innerHTML=`<div class="subject-head"><div><div class="subject-title">${name}</div><div class="subject-meta">${x.g} • peso ${x.n}</div></div><b>${d}/${x.t.length}</b></div>`;x.t.forEach((t,i)=>{let deep=t.startsWith('★ '),k=key(name,i),r=document.createElement('div');r.className='topic '+(S.topics[k]?'done':'');r.innerHTML=`<input type="checkbox" ${S.topics[k]?'checked':''}><label>${deep?t.slice(2):t}</label><span class="tag ${deep?'deep':''}">${deep?'aprofundamento':'microtema'}</span>`;r.querySelector('input').onchange=e=>{S.topics[k]=e.target.checked;save();renderSubjects();renderOverview()};box.appendChild(r)});subjectGrid.appendChild(box)})}
+function writingForWeek(i){let candidates=remote.redacoes.filter(r=>Number(r.week??r.semana??r.cronograma_etapa)===(i+1));return candidates[candidates.length-1]||null}
+function renderWeeks(){weeksGrid.innerHTML='';weeks.forEach((w,i)=>{let done=!!S.weeks[i+1],red=writingForWeek(i),theme=red?.tema||red?.theme||null;let el=document.createElement('article');el.className='week '+(done?'completed':'');el.innerHTML=`<div class="week-top"><div><div class="week-num">SEMANA ${String(i+1).padStart(2,'0')}</div><h3>${w.title}</h3></div><label class="week-status"><input class="week-check" type="checkbox" ${done?'checked':''}> concluída</label></div><div class="chips">${w.subjects.map(s=>`<span class="chip">${s}</span>`).join('')}</div><div class="week-block"><b>Foco</b>${w.focus}</div><div class="week-block wr"><b>Redação</b>${theme?esc(theme):w.writing+' • tema ainda não registrado'}</div><div class="week-block"><b>Kaizen</b>${w.kaizen}</div>`;el.querySelector('input').onchange=e=>{S.weeks[i+1]=e.target.checked;save();renderWeeks();renderOverview();renderDeepDive(currentWeek())};weeksGrid.appendChild(el)})}
+function completedSubjectCount(){return Object.entries(subjects).filter(([n,x])=>x.t.every((_,i)=>S.topics[key(n,i)])).length}
+function normalizeList(v){if(!v)return[];if(Array.isArray(v))return v;return String(v).split(/[;,•]/).map(x=>x.trim()).filter(Boolean)}
 function latestTutor(){return remote.tutor[remote.tutor.length-1]||null}
-function difficultyMap(){
- let map={};
- remote.tutor.forEach(x=>{
-   let vals=[...normalizeList(x.dificuldades||x.difficulty||x.gaps||x.lacunas||x.subjects_difficulty),...normalizeList(x.reforco||x.reinforcement||x.recovery_focus)];
-   vals.forEach(v=>{let subj=Object.keys(subjects).find(s=>v.toLowerCase().includes(s.toLowerCase()))||v;map[subj]=(map[subj]||0)+1});
- });
- return Object.entries(map).sort((a,b)=>b[1]-a[1]);
-}
-function currentWeek(){
- let done=Object.values(S.weeks).filter(Boolean).length;return Math.min(done+1,weeks.length);
-}
-function renderCurrentStudy(cw,red){
- const w=weeks[cw-1],details=weekDetails[cw-1]||{};
- currentStudyGrid.innerHTML=w.subjects.map(name=>`<div class="study-item"><b>${esc(name)}</b><span>${esc(details[name]||w.focus)}</span></div>`).join('')+
- `<div class="study-item writing"><b>Redação</b><span>${esc(red?.tema||red?.theme||w.writing+' • tema ainda não registrado')}</span></div>`;
-}
-
-function renderOverview(){
- let done=Object.values(S.weeks).filter(Boolean).length,sub=completedSubjectCount(),att=difficultyMap()[0],cw=currentWeek(),red=writingForWeek(cw-1);
- mWeeks.textContent=`${done}/17`;pWeeks.style.width=(done/17*100)+'%';
- mSubjects.textContent=`${sub}/${Object.keys(subjects).length}`;pSubjects.style.width=(sub/Object.keys(subjects).length*100)+'%';
- mAttention.textContent=att?att[0]:'Sem base';mAttentionWhy.textContent=att?`${att[1]} registro(s) de dificuldade/reforço.`:'Aguardando diagnóstico do Tutor.';
- mWriting.textContent=red?.tema||red?.theme||'A definir';mWritingMeta.textContent=red?`Semana ${String(cw).padStart(2,'0')} • ${red.status||'proposta'}`:'O Agente de Redação registrará o tema.';
- heroStatus.textContent=`Semana ${String(cw).padStart(2,'0')}`;heroSub.textContent=weeks[cw-1]?.title||'Fase concluída';renderCurrentStudy(cw,red);
- let completed=remote.redacoes.filter(r=>(r.status||'').toLowerCase()==='corrigida');
- writingHistory.innerHTML=completed.length?`<div class="writing-list">${completed.slice(-8).reverse().map(r=>`<div class="writing-row"><span>SEMANA ${String(r.week??r.semana??'—').padStart(2,'0')}</span><b>${esc(r.tema||'Tema')}</b><em>corrigida ✓</em></div>`).join('')}</div>`:'<div class="empty">Nenhuma redação corrigida registrada ainda.</div>';
-}
-function getScore(r,banca){
- let a=r.avaliacoes?.[banca]||r[banca]||{};
- let nota=a.nota??a.score;let max=a.nota_maxima??a.max;
- if(nota==null)return'—';return max!=null?`${nota}/${max}`:String(nota);
-}
-function extractSimulados(){
- let out=[];
- remote.tutor.forEach(x=>{
-   let arr=x.simulados||x.provas||x.tests||[];
-   if(!Array.isArray(arr)&&arr)arr=[arr];
-   arr.forEach(s=>out.push(s));
-   if(x.simulado||x.prova)out.push(x.simulado||x.prova);
- });
- return out;
-}
-function renderPerformance(){
- let lt=latestTutor(),diff=difficultyMap(),sims=extractSimulados(),reds=remote.redacoes;
- dWeek.textContent=lt?(lt.week?`Semana ${String(lt.week).padStart(2,'0')}`:'Avaliação recente'):'—';
- dDiagnosis.textContent=lt?(lt.diagnosis||lt.diagnostico||'Diagnóstico registrado.'):'Ainda sem avaliação do Tutor.';
- dReinforce.textContent=diff[0]?.[0]||lt?.recovery_focus||lt?.recovery||'—';
- let ls=sims[sims.length-1];
- dSim.textContent=ls?(ls.nome||ls.name||ls.prova||'Simulado'):'—';
- if(ls){let c=ls.acertos??ls.correct,t=ls.total??ls.questions;dSimMeta.textContent=(c!=null&&t!=null)?`${c}/${t} • ${Math.round(c/t*100)}%`:'Resultado registrado';}
- else dSimMeta.textContent='Nenhum resultado registrado.';
- let lr=[...reds].reverse().find(r=>(r.status||'').toLowerCase()==='corrigida');
- dWriting.textContent=lr?(lr.tema||'Redação'):'—';dWritingMeta.textContent=lr?`Cebraspe ${getScore(lr,'cebraspe')} • Cesgranrio ${getScore(lr,'cesgranrio')}`:'Nenhuma correção registrada.';
- difficultyList.innerHTML=diff.length?diff.slice(0,6).map(([n,c])=>`<div class="attention"><b>${esc(n)}</b><span>${c} ocorrência(s)</span></div>`).join(''):'<div class="empty">O Tutor ainda não registrou dificuldades.</div>';
- let rein=normalizeList(lt?.next_sequence||lt?.proxima_sequence||lt?.recovery_focus||lt?.reforco||lt?.cut_list);
- reinforceList.innerHTML=rein.length?rein.map((x,i)=>`<div class="attention"><b>${esc(x)}</b><span>#${i+1}</span></div>`).join(''):'<div class="empty">Aguardando próxima avaliação do Tutor.</div>';
- simTable.innerHTML=sims.length?sims.slice().reverse().map(s=>{let c=s.acertos??s.correct,t=s.total??s.questions,p=c!=null&&t?Math.round(c/t*100)+'%':'—';return`<tr><td>${esc(s.data||s.date||'—')}</td><td>${esc(s.nome||s.name||s.prova||'Simulado')}</td><td>${c??'—'}</td><td>${t??'—'}</td><td>${p}</td><td>${esc(s.observacao||s.note||'—')}</td></tr>`}).join(''):'<tr><td colspan="6"><div class="empty">Nenhum simulado ou prova registrado pelo Tutor.</div></td></tr>';
- redTable.innerHTML=reds.length?reds.slice().reverse().map(r=>`<tr><td>${esc(r.week??r.semana??r.cronograma_etapa??'—')}</td><td>${esc(r.tema||'—')}</td><td>${esc(r.status||'—')}</td><td class="score">${getScore(r,'cebraspe')}</td><td class="score">${getScore(r,'cesgranrio')}</td><td>${esc(normalizeList(r.foco_proximo_treino||r.next_focus).join(' • ')||'—')}</td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">Nenhuma redação registrada.</div></td></tr>';
-}
+function difficultyMap(){let map={};remote.tutor.forEach(x=>{let vals=[...normalizeList(x.dificuldades||x.difficulty||x.gaps||x.lacunas||x.subjects_difficulty),...normalizeList(x.reforco||x.reinforcement||x.recovery_focus)];vals.forEach(v=>{let subj=Object.keys(subjects).find(s=>v.toLowerCase().includes(s.toLowerCase()))||v;map[subj]=(map[subj]||0)+1})});return Object.entries(map).sort((a,b)=>b[1]-a[1])}
+function currentWeek(){let done=Object.values(S.weeks).filter(Boolean).length;return Math.min(done+1,weeks.length)}
+function renderCurrentStudy(cw,red){const w=weeks[cw-1],details=weekDetails[cw-1]||{};currentStudyGrid.innerHTML=w.subjects.map(name=>`<div class="study-item"><b>${esc(name)}</b><span>${esc(details[name]||w.focus)}</span></div>`).join('')+`<div class="study-item writing"><b>Redação</b><span>${esc(red?.tema||red?.theme||w.writing+' • tema ainda não registrado')}</span></div>`}
+function renderOverview(){let done=Object.values(S.weeks).filter(Boolean).length,sub=completedSubjectCount(),att=difficultyMap()[0],cw=currentWeek(),red=writingForWeek(cw-1);mWeeks.textContent=`${done}/17`;pWeeks.style.width=(done/17*100)+'%';mSubjects.textContent=`${sub}/${Object.keys(subjects).length}`;pSubjects.style.width=(sub/Object.keys(subjects).length*100)+'%';mAttention.textContent=att?att[0]:'Sem base';mAttentionWhy.textContent=att?`${att[1]} registro(s) de dificuldade/reforço.`:'Aguardando diagnóstico do Tutor.';mWriting.textContent=red?.tema||red?.theme||'A definir';mWritingMeta.textContent=red?`Semana ${String(cw).padStart(2,'0')} • ${red.status||'proposta'}`:'O Agente de Redação registrará o tema.';heroStatus.textContent=`Semana ${String(cw).padStart(2,'0')}`;heroSub.textContent=weeks[cw-1]?.title||'Fase concluída';renderCurrentStudy(cw,red);let completed=remote.redacoes.filter(r=>(r.status||'').toLowerCase()==='corrigida');writingHistory.innerHTML=completed.length?`<div class="writing-list">${completed.slice(-8).reverse().map(r=>`<div class="writing-row"><span>SEMANA ${String(r.week??r.semana??'—').padStart(2,'0')}</span><b>${esc(r.tema||'Tema')}</b><em>corrigida ✓</em></div>`).join('')}</div>`:'<div class="empty">Nenhuma redação corrigida registrada ainda.</div>'}
+function renderDeepDive(weekNo){weekNo=Math.max(1,Math.min(weeks.length,+weekNo||currentWeek()));deepWeekSelect.value=weekNo;const i=weekNo-1,w=weeks[i],details=weekDetails[i]||{},red=writingForWeek(i),bank=weekQuestionBank[weekNo]||{};deepWeekTitle.textContent=`Semana ${String(weekNo).padStart(2,'0')}`;deepWeekSubtitle.textContent=w.title;deepWriting.textContent=red?.tema||red?.theme||'A definir';deepWritingMeta.textContent=red?`${red.status||'proposta'} • ${red.banca_alvo||red.banca||w.writing}`:`${w.writing} • tema ainda não registrado`;deepKaizen.textContent=w.kaizen;deepDocLabel.textContent=`semana-${String(weekNo).padStart(2,'0')}.md`;deepDocLink.href=ROOT+`metodologia/semanas/semana-${String(weekNo).padStart(2,'0')}.md`;deepSimLink.href=ROOT+`provas/simulado/semana${String(weekNo).padStart(2,'0')}_simulado.pdf`;deepGabLink.href=ROOT+`provas/simulado/semana${String(weekNo).padStart(2,'0')}_gabarito.pdf`;deepSubjects.innerHTML=w.subjects.map(name=>{let q=bank[name]||[];let pdf=ROOT+`provas/questoes/semana-${String(weekNo).padStart(2,'0')}/${slug(name)}.pdf`;let preview=q.length?q.map((x,idx)=>`<div class="question-card"><b>Questão ${idx+1}</b><p>${esc(x.enunciado||x.texto||x.question||'')}</p><p class="question-source">${esc(x.fonte||x.source||'Fonte registrada pelo Tutor')}</p></div>`).join(''):'<div class="empty">Banco ainda não gerado pelo Tutor para esta disciplina.</div>';return`<div class="deep-subject"><div class="deep-subject-head"><div><h3>${esc(name)}</h3><p>${esc(details[name]||w.focus)}</p></div><div class="deep-actions"><a class="asset-link" href="${pdf}" target="_blank">PDF de questões ↗</a></div></div><div class="question-preview">${preview}</div></div>`}).join('')}
+deepWeekSelect.innerHTML=weeks.map((w,i)=>`<option value="${i+1}">Semana ${String(i+1).padStart(2,'0')} — ${w.title}</option>`).join('');deepWeekSelect.onchange=()=>renderDeepDive(+deepWeekSelect.value);
+function getScore(r,banca){let a=r.avaliacoes?.[banca]||r[banca]||{};let nota=a.nota??a.score;let max=a.nota_maxima??a.max;if(nota==null)return'—';return max!=null?`${nota}/${max}`:String(nota)}
+function extractSimulados(){let out=[];remote.tutor.forEach(x=>{let arr=x.simulados||x.provas||x.tests||[];if(!Array.isArray(arr)&&arr)arr=[arr];arr.forEach(s=>out.push(s));if(x.simulado||x.prova)out.push(x.simulado||x.prova)});return out}
+function renderPerformance(){let lt=latestTutor(),diff=difficultyMap(),sims=extractSimulados(),reds=remote.redacoes;dWeek.textContent=lt?(lt.week?`Semana ${String(lt.week).padStart(2,'0')}`:'Avaliação recente'):'—';dDiagnosis.textContent=lt?(lt.diagnosis||lt.diagnostico||'Diagnóstico registrado.'):'Ainda sem avaliação do Tutor.';dReinforce.textContent=diff[0]?.[0]||lt?.recovery_focus||lt?.recovery||'—';let ls=sims[sims.length-1];dSim.textContent=ls?(ls.nome||ls.name||ls.prova||'Simulado'):'—';if(ls){let c=ls.acertos??ls.correct,t=ls.total??ls.questions;dSimMeta.textContent=(c!=null&&t!=null)?`${c}/${t} • ${Math.round(c/t*100)}%`:'Resultado registrado'}else dSimMeta.textContent='Nenhum resultado registrado.';let lr=[...reds].reverse().find(r=>(r.status||'').toLowerCase()==='corrigida');dWriting.textContent=lr?(lr.tema||'Redação'):'—';dWritingMeta.textContent=lr?`Cebraspe ${getScore(lr,'cebraspe')} • Cesgranrio ${getScore(lr,'cesgranrio')}`:'Nenhuma correção registrada.';difficultyList.innerHTML=diff.length?diff.slice(0,6).map(([n,c])=>`<div class="attention"><b>${esc(n)}</b><span>${c} ocorrência(s)</span></div>`).join(''):'<div class="empty">O Tutor ainda não registrou dificuldades.</div>';let rein=normalizeList(lt?.next_sequence||lt?.proxima_sequence||lt?.recovery_focus||lt?.reforco||lt?.cut_list);reinforceList.innerHTML=rein.length?rein.map((x,i)=>`<div class="attention"><b>${esc(x)}</b><span>#${i+1}</span></div>`).join(''):'<div class="empty">Aguardando próxima avaliação do Tutor.</div>';simTable.innerHTML=sims.length?sims.slice().reverse().map(s=>{let c=s.acertos??s.correct,t=s.total??s.questions,p=c!=null&&t?Math.round(c/t*100)+'%':'—';return`<tr><td>${esc(s.data||s.date||'—')}</td><td>${esc(s.nome||s.name||s.prova||'Simulado')}</td><td>${c??'—'}</td><td>${t??'—'}</td><td>${p}</td><td>${esc(s.observacao||s.note||'—')}</td></tr>`}).join(''):'<tr><td colspan="6"><div class="empty">Nenhum simulado ou prova registrado pelo Tutor.</div></td></tr>';redTable.innerHTML=reds.length?reds.slice().reverse().map(r=>`<tr><td>${esc(r.week??r.semana??r.cronograma_etapa??'—')}</td><td>${esc(r.tema||'—')}</td><td>${esc(r.status||'—')}</td><td class="score">${getScore(r,'cebraspe')}</td><td class="score">${getScore(r,'cesgranrio')}</td><td>${esc(normalizeList(r.foco_proximo_treino||r.next_focus).join(' • ')||'—')}</td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">Nenhuma redação registrada.</div></td></tr>'}
 async function getJSON(url){let r=await fetch(url+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(r.status);return r.json()}
 async function sync(all=true){
- try{
-  syncStatus.textContent='sincronizando…';
-  let [r,t]=await Promise.all([getJSON(URLS.redacoes),getJSON(URLS.tutor)]);
-  remote.redacoes=Array.isArray(r)?r:(r.redacoes||[]);
-  remote.tutor=Array.isArray(t)?t:(t.avaliacoes||[]);
-  renderWeeks();renderOverview();renderPerformance();syncStatus.textContent='sincronizado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
- }catch(e){syncStatus.textContent='sem conexão • mantendo dados locais';renderWeeks();renderOverview();renderPerformance()}
-}
-syncPerformance.onclick=()=>sync();
-renderSubjects();renderWeeks();renderOverview();renderPerformance();sync();
+ if(typeof PUBLIC_EMBEDDED_DATA!=='undefined' && PUBLIC_EMBEDDED_DATA){
+  renderWeeks();renderOverview();renderPerformance();
+  syncStatus.textContent='snapshot publicado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  return;
+ }try{syncStatus.textContent='sincronizando…';let [r,t]=await Promise.all([getJSON(URLS.redacoes),getJSON(URLS.tutor)]);remote.redacoes=Array.isArray(r)?r:(r.redacoes||[]);remote.tutor=Array.isArray(t)?t:(t.avaliacoes||[]);renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek());syncStatus.textContent='sincronizado • '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}catch(e){syncStatus.textContent='sem conexão • mantendo dados locais';renderWeeks();renderOverview();renderPerformance();renderDeepDive(+deepWeekSelect.value||currentWeek())}}
+syncPerformance.onclick=()=>sync();renderSubjects();renderWeeks();renderOverview();renderPerformance();renderDeepDive(currentWeek());sync();
 })();
 </script>
 </body>
 </html>
-<!-- synced-from-bacen: 1d0dd91794f33174617b015fd4ec593e9fac47c8 -->
+<!-- public-build: redacoes=0; tutor=0; source=private-bacen -->
+
+<!-- synced-from-bacen: d8199a4062638ce128c6c68bdd1346da02bca0b1 -->
