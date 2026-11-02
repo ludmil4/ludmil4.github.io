@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extrato de Oportunidade — ALCIFMAIS — Paraná Seguros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1E45; --ink-2:#0038B8; --ink-3:#0068DA; --navy-pill:#143376; --sky:#3E97D6;
+    --cyan:#07A0F0; --paper:#EFEEE9; --card:#FFFFFF; --line:#E4E1D8; --text:#16213A;
+    --text-soft:#5B6472; --gold:#C9891F; --gold-ink:#241A0C; --loss-bg:#DCE0E7;
+    --loss-value:#F5B83D; --loss-text:#33396B; --loss-ink:#7A5A16; --loss-tag-bg:#F7DAD3;
+    --loss-row-tint:#FBEEEC; --loss-row-tint-2:#FDF6F5; --bordo:#7A1E2E; --radius:16px;
+    --sans:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:Georgia,'Times New Roman',Times,serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--text);font-family:var(--sans);padding:40px 16px 64px;-webkit-font-smoothing:antialiased;}
+  .statement{max-width:960px;margin:0 auto;background:var(--card);border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 1px 2px rgba(16,30,48,.06), 0 18px 40px rgba(16,30,48,.10);}
+  .stmt-header{background:linear-gradient(135deg,var(--ink-2) 0%, var(--ink-3) 100%);color:#F3F1E9;padding:22px 32px;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:16px;}
+  .brand-row{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+  .brand-row img{width:24px;height:24px;display:block;border-radius:4px;}
+  .brand-row .brandline{font-size:13px;letter-spacing:.02em;color:#F3F1E9;font-weight:600;}
+  .stmt-header h1{margin:0;font-size:21px;font-weight:600;letter-spacing:-0.01em;}
+  .stmt-header .entity{margin-top:4px;font-size:13.5px;color:#CFE0F9;}
+  .header-center{justify-self:center;align-self:center;padding-top:2px;}
+  .header-right{justify-self:end;}
+  .toggle{display:inline-flex;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+    border-radius:999px;padding:3px;gap:2px;}
+  .toggle button{border:none;background:transparent;color:#DCE6FA;font-size:12.5px;font-weight:600;
+    padding:7px 16px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .15s ease, color .15s ease;}
+  .toggle button.active{background:#F3F1E9;color:var(--ink-2);}
+  .month-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;min-height:46px;padding:7px 16px;border-radius:12px;
+    border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);color:#DCE6FA;font-weight:700;
+    font-size:12px;letter-spacing:.03em;white-space:nowrap;}
+  .month-status{font-size:10.5px;font-weight:600;letter-spacing:.02em;white-space:nowrap;}
+  .month-status.is-parcial{color:#F0C87A;}
+  .month-status.is-fechado{color:rgba(243,241,233,.55);}
+  .stmt-greeting{padding:24px 32px 6px;font-family:inherit;font-size:15px;font-weight:700;line-height:1.5;
+    color:var(--text);white-space:nowrap;}
+  .stmt-greeting b{font-weight:700;}
+  .stmt-hero{display:grid;grid-template-columns:0.85fr 1.15fr;gap:1px;background:var(--line);
+    margin:24px 32px 0;border-radius:12px;overflow:hidden;}
+  .hero-block{padding:26px 26px;min-width:0;overflow:hidden;}
+  .hero-loss{background:var(--loss-bg);color:var(--loss-text);}
+  .hero-unlock{background:#1B2158;color:#DCE9FA;}
+  .hero-label{font-size:13px;color:inherit;opacity:.82;margin-bottom:10px;}
+  .hero-label-note{font-size:11.5px;color:inherit;opacity:.65;margin:-6px 0 10px;font-weight:400;}
+  .hero-value{font-size:38px;font-weight:700;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;line-height:1.05;margin-bottom:8px;}
+  .hero-loss .hero-label{opacity:.85;}
+  .hero-loss .hero-value{color:var(--loss-value);}
+  .hero-loss .hero-sub{opacity:.9;}
+  .hero-unlock .hero-value{color:var(--cyan);font-size:21px;font-weight:600;margin-bottom:14px;}
+  .hero-sub{font-size:13px;opacity:.85;line-height:1.5;}
+  .gauge{margin-top:38px;}
+  .gauge-track{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.14);margin:28px 2px 32px;}
+  .gauge-fill{position:absolute;top:0;left:0;height:100%;border-radius:999px;background:var(--cyan);}
+  .gauge-tick{position:absolute;top:-4px;width:1px;height:16px;background:rgba(255,255,255,.35);}
+  .gauge-tick-label{position:absolute;top:14px;transform:translateX(-50%);font-size:10.5px;color:rgba(220,233,250,.65);white-space:nowrap;}
+  .gauge-tick-pct{position:absolute;top:-20px;transform:translateX(-50%);font-size:10.5px;font-weight:600;color:rgba(220,233,250,.85);white-space:nowrap;}
+  .gauge-marker{position:absolute;top:-9px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;}
+  .gauge-marker .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);}
+  .gauge-marker.marker-group .dot{background:var(--cyan);}
+  .gauge-marker .tag{position:absolute;top:-22px;font-size:10.5px;font-weight:600;white-space:nowrap;}
+  .hero-desc{font-size:12px;color:inherit;opacity:.75;line-height:1.45;margin-top:18px;}
+  .corban-table{margin-top:8px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.18);}
+  .ct-row{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:6px;align-items:center;}
+  .ct-row + .ct-row{margin-top:10px;}
+  .ct-label{font-size:11.5px;color:rgba(220,233,250,.7);line-height:1.3;}
+  .ct-col{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:center;color:#DCE9FA;}
+  .ct-header .ct-col{font-size:10.5px;font-weight:700;color:rgba(220,233,250,.6);}
+  .ct-row:nth-child(2) .ct-col{color:var(--cyan);}
+  .stmt-kpis{display:grid;grid-template-columns:repeat(4,1fr);margin:28px 32px 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .kpi{padding:18px 18px;border-left:1px solid var(--line);}
+  .kpi:first-child{border-left:none;}
+  .kpi-label{font-size:12px;color:var(--text-soft);margin-bottom:6px;}
+  .kpi-value{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;}
+  .stmt-split{margin:26px 32px 0;}
+  .section-title{font-size:13.5px;font-weight:600;color:var(--sky);margin-bottom:10px;}
+  .split-bar{display:flex;height:34px;border-radius:8px;overflow:hidden;}
+  .split-seg{display:flex;align-items:center;padding:0 12px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;min-width:0;overflow:hidden;}
+  .split-seg.seg-seguro{background:var(--ink-3);}
+  .split-seg.seg-semseguro{background:#B7B2A4;color:#3A362C;}
+  .stmt-trend{margin:26px 32px 0;}
+  .trend-row{display:flex;align-items:flex-end;gap:14px;padding:0 4px;}
+  .trend-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;}
+  .trend-value{font-size:11px;color:var(--text-soft);margin-bottom:6px;font-variant-numeric:tabular-nums;}
+  .trend-bar-track{width:100%;max-width:46px;height:64px;display:flex;align-items:flex-end;}
+  .trend-bar{width:100%;border-radius:5px 5px 0 0;background:#C9C4B7;}
+  .trend-bar.current{background:var(--ink-3);}
+  .trend-month{font-size:11px;color:var(--text-soft);margin-top:8px;font-weight:600;}
+  .trend-detail{font-size:10px;color:var(--text-soft);margin-top:3px;line-height:1.5;}
+  .trend-detail b{color:var(--text);font-weight:600;}
+  .trend-detail b.opp-perdida{color:var(--bordo);font-weight:700;}
+  .stmt-products{margin:30px 32px 0;}
+  .stmt-products table{width:100%;border-collapse:collapse;font-size:12.8px;}
+  .stmt-products thead th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+    color:var(--text-soft);font-weight:600;font-size:11.5px;}
+  .stmt-products thead th.num, .stmt-products tbody td.num{text-align:right;}
+  .stmt-products tbody td{padding:10px 10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;}
+  .stmt-products tbody tr.top-opp td{background:var(--loss-row-tint);}
+  .stmt-products tbody tr.second-opp td{background:var(--loss-row-tint-2);}
+  .stmt-products tbody tr.total td{font-weight:700;border-top:2px solid var(--ink);border-bottom:none;}
+  .prod-name{font-weight:600;}
+  .tag-top{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--loss-ink);background:var(--loss-tag-bg);padding:1px 7px;border-radius:999px;vertical-align:middle;}
+  .tag-top-sm{display:inline-block;margin-left:6px;font-size:9.5px;font-weight:700;color:var(--loss-ink);background:#FBEAE6;padding:1px 6px;border-radius:999px;vertical-align:middle;}
+  .weight-note{font-size:11.5px;color:var(--text-soft);margin:-4px 0 12px;}
+  .alert-card{display:flex;align-items:flex-start;gap:12px;margin-top:16px;padding:14px 16px;
+    background:#FBF3E3;border-left:3px solid var(--gold);border-radius:8px;}
+  .alert-card .alert-icon{font-size:16px;line-height:1.3;}
+  .alert-card .alert-text{font-size:12.5px;color:var(--text);line-height:1.5;}
+  .alert-card .alert-text b{color:var(--gold-ink);}
+  .stmt-table{margin:30px 32px 0;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);color:var(--text-soft);font-weight:600;font-size:12px;}
+  thead th.num, tbody td.num{text-align:right;}
+  tbody td{padding:11px 10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;}
+  tbody tr.total td{font-weight:700;border-top:2px solid var(--ink);border-bottom:none;}
+  .store-name{font-weight:600;}
+  .store-code{color:var(--text-soft);font-weight:400;font-size:12px;}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;}
+  .pill-low{background:#F3E3DD;color:#8A3B27;}
+  .pill-mid{background:#FBEDD3;color:#8A5A16;}
+  .pill-good{background:#E1F0EA;color:#1F6F62;}
+  .stmt-footer{margin:24px 32px 26px;padding:16px 24px;border-radius:12px;background:var(--loss-bg);
+    color:var(--loss-text);font-size:11.5px;line-height:1.6;text-align:center;}
+  #panel-loja{display:none;}
+  @media (max-width:680px){
+    .stmt-header{grid-template-columns:1fr;justify-items:start;}
+    .header-center{justify-self:start;}
+    .header-right{justify-self:start;}
+    .stmt-hero{grid-template-columns:1fr;}
+    .stmt-kpis{grid-template-columns:repeat(2,1fr);}
+    .kpi:nth-child(3){border-left:none;}
+    .stmt-greeting{white-space:normal;}
+  }
+</style>
+
+<style>
+.bk{margin:16px 32px 0;background:#0c0c0b;color:#f4f3ee;border-radius:12px;position:relative;overflow:hidden;font-family:var(--sans);
+    padding:12px 20px 12px 22px;display:grid;grid-template-columns:118px minmax(0,1fr) 236px;gap:16px;align-items:stretch;}
+.bk::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#f5c400;}
+.bk *{box-sizing:border-box;}
+.bk .num{font-family:'Archivo','Arial Black',sans-serif;font-weight:900;font-variant-numeric:tabular-nums;}
+.bk .lbl{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#f4f3ee;font-weight:600;}
+.bk .mut{color:#a3a29a;} .bk .gold{color:#f5c400;}
+.bk .id{display:flex;flex-direction:column;gap:5px;justify-content:center;}
+.bk .wm{font:900 20px/.95 'Archivo','Arial Black',sans-serif;}
+.bk .wm b{display:block;color:#f4f3ee;} .bk .wm s{display:block;text-decoration:none;color:transparent;-webkit-text-stroke:1.1px #f4f3ee;}
+.bk .dt{font-size:11px;color:#d6d4cc;} .bk .dt2{font-size:10px;color:#8f8e88;}
+.bk .ms2{display:flex;flex-direction:column;justify-content:center;gap:9px;border-left:1px solid #2a2a27;border-right:1px solid #2a2a27;padding:0 18px;min-width:0;}
+.bk .l1{display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.bk .mn{background:#f5c400;color:#0b0b0b;font:900 10px/1 'Archivo','Arial Black',sans-serif;width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;}
+.bk .v{margin-left:auto;font-size:12px;color:#a3a29a;}
+.bk .v b{font-family:'Archivo','Arial Black',sans-serif;font-weight:900;font-size:15px;color:#f4f3ee;}
+.bk .tl{position:relative;height:7px;border-radius:999px;background:#2a2a27;margin-top:5px;}
+.bk .tl .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:#f5c400;}
+.bk .tl .exp{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px dashed #f4f3ee;opacity:.75;}
+.bk .tl .goal{position:absolute;right:-1px;top:-4px;width:3px;height:15px;background:#f4f3ee;border-radius:2px;}
+.bk .l3{font-size:10px;color:#8f8e88;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:7px;}
+.bk .l3 b{color:#d6d4cc;font-weight:600;}
+.bk .st{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap;}
+.bk .st i{width:6px;height:6px;border-radius:50%;display:inline-block;}
+.bk .st.late{background:rgba(255,77,46,.15);color:#ff7a5e;} .bk .st.late i{background:#ff4d2e;}
+.bk .st.warn{background:rgba(245,196,0,.14);color:#f5c400;} .bk .st.warn i{background:#f5c400;}
+.bk .st.ok{background:rgba(43,182,115,.15);color:#3fd08a;} .bk .st.ok i{background:#2bb673;}
+.bk .pz{display:flex;flex-direction:column;justify-content:center;min-width:0;}
+.bk .pz .lbl{font-size:9.5px;color:#a3a29a;}
+.bk .pz .big{font-family:'Archivo','Arial Black',sans-serif;font-weight:900;font-size:28px;line-height:1;color:#f5c400;margin:5px 0 2px;}
+.bk .pz .cap{font-size:10px;color:#8f8e88;}
+.bk .pz .more{margin-top:7px;padding-top:6px;border-top:1px dashed #2a2a27;font-size:10.5px;color:#a3a29a;line-height:1.45;}
+.bk .pz .more b{color:#d6d4cc;font-weight:600;} .bk .pz .more .t b{color:#f4f3ee;font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="statement">
+
+  <div class="stmt-header">
+    <div class="header-left">
+      <div class="brand-row">
+        <img src="data:image/png;base64,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" alt="Paraná Seguros">
+        <span class="brandline">PARANÁ SEGUROS</span>
+      </div>
+      <h1>Extrato de Oportunidade</h1>
+      <div class="entity" id="entity-name">Grupo ALCIFMAIS <span style="opacity:.6">· 7 lojas ativas</span></div>
+      <select id="loja-select" style="display:none;margin-top:10px;background:rgba(255,255,255,.12);color:#F3F1E9;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 10px;font-size:12.5px;font-family:inherit;">
+        <option value="60814">Loja: ALCIFMAIS</option>
+        <option value="150055">Loja: ALCIF - JMO SERVICOS DE PREPARACAO</option>
+        <option value="150056">Loja: ALCIF - 3RN INTERMEDIACOES</option>
+        <option value="150059">Loja: ALCIF - VIP SOLUCOES</option>
+        <option value="150060">Loja: ALCIF - GCM ASSESSORIA EMPRESARIAL LTDA</option>
+        <option value="150062">Loja: ALCIF - Dinnerbier</option>
+        <option value="150064">Loja: Alcif - AMG</option>
+        <option value="150066">Loja: MLA SERVICOS</option>
+        <option value="150083">Loja: SIMDIMCRED LTDA</option>
+        <option value="150085">Loja: LJP SEOUD LTDA</option>
+        <option value="150086">Loja: GRUPO LOCAL SERVICOS</option>
+      </select>
+    </div>
+    <div class="header-center">
+      <div class="toggle">
+        <button id="btn-grupo" class="active">Visão Grupo</button>
+        <button id="btn-loja">Visão Loja</button>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="month-badge">
+        <div>OUTUBRO/2026</div>
+        <div class="month-status is-parcial">parcial até 26/10</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-loja">
+    <div class="stmt-greeting" id="greeting-loja"></div>
+    <div class="stmt-hero">
+      <div class="hero-block hero-loss">
+        <div class="hero-label" id="hero1-label"><b>Comissão que ficou na mesa em outubro</b></div>
+        <div class="hero-label-note">(sem campanhas e incentivos)</div>
+        <div class="hero-value" id="hero1-value"></div>
+        <div class="hero-sub" id="hero1-sub"></div>
+      </div>
+      <div class="hero-block hero-unlock">
+        <div class="hero-label">Se você atingisse <b>80% de Aproveitamento Financeiro</b></div>
+        <div class="hero-value" id="hero2-loja-value"></div>
+        <div class="gauge">
+          <div class="gauge-track">
+            <div class="gauge-fill" id="gauge-fill-loja" style="width:0%"></div>
+            <div class="gauge-tick" style="left:80%"></div>
+            <div class="gauge-tick-label" style="left:80%">meta: 80%</div>
+            <div class="gauge-marker marker-group" id="gauge-marker-loja" style="left:0%"><span class="tag" id="gauge-tag-loja">Você 0%</span><span class="dot"></span></div>
+          </div>
+        </div>
+        <div class="hero-sub" style="margin-top:20px;" id="hero2-loja-sub"></div>
+      </div>
+    </div>
+    <div class="stmt-kpis">
+      <div class="kpi"><div class="kpi-label">Crédito elegível</div><div class="kpi-value" id="kpi-elig"></div></div>
+      <div class="kpi"><div class="kpi-label">Integrado c/ seguro</div><div class="kpi-value" id="kpi-integ"></div></div>
+      <div class="kpi"><div class="kpi-label">Aproveitamento (ApFin)</div><div class="kpi-value" id="kpi-apfin"></div></div>
+      <div class="kpi"><div class="kpi-label">Comissão do seguro no mês</div><div class="kpi-value" id="kpi-receita"></div></div>
+    </div>
+    <div class="stmt-split">
+      <div class="section-title">Como está seu crédito elegível</div>
+      <div class="split-bar">
+        <div class="split-seg seg-seguro" id="split-seguro">— com seguro</div>
+        <div class="split-seg seg-semseguro" id="split-semseguro">— sem seguro</div>
+      </div>
+    </div>
+    <div class="stmt-products" id="detail-convenio-wrap">
+      <div class="section-title">Detalhamento da oportunidade — por convênio</div>
+      <table>
+        <thead><tr>
+          <th>Convênio</th><th class="num">Elegível</th><th class="num">Sem seguro</th>
+          <th class="num">ApFin</th><th class="num">Comissão na mesa</th>
+          <th class="num">% da carteira (loja / grupo)</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="weight-note">"% da carteira (loja / grupo)" compara o peso de cada convênio dentro desta loja com o peso do mesmo convênio no grupo inteiro — ↑ indica que a loja vende relativamente mais desse convênio que a média do grupo, ↓ indica relativamente menos.</div>
+    </div>
+    <div class="stmt-trend">
+      <div class="section-title">Evolução da sua comissão — últimos 4 meses</div>
+      <div class="trend-row" id="trend-loja-row"></div>
+      <div class="bank-note" style="margin-top:14px;font-size:12.5px;color:var(--text-soft);line-height:1.5;">"Repasse médio" é a comissão de seguro recebida dividida pelo total integrado com seguro no mês — a taxa efetiva que a Paraná Seguros pagou à loja naquele período.</div>
+    </div>
+    <div class="stmt-products" id="detail-operador-wrap" style="margin-top:26px;">
+      <div class="section-title">Detalhamento da oportunidade — por operador(a)</div>
+      <table>
+        <thead><tr>
+          <th>Operador(a)</th><th class="num">Elegível</th><th class="num">Sem seguro</th>
+          <th class="num">ApFin</th><th class="num">Comissão na mesa</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="panel-grupo">
+    <div class="stmt-greeting" id="greeting-grupo"></div>
+    <div class="stmt-hero">
+      <div class="hero-block hero-loss">
+        <div class="hero-label" id="g-hero1-label"><b>Comissão que ficou na mesa do grupo em outubro</b></div>
+        <div class="hero-label-note">(sem campanhas e incentivos)</div>
+        <div class="hero-value" id="g-hero1-value"></div>
+        <div class="hero-sub" id="g-hero1-sub"></div>
+      </div>
+      <div class="hero-block hero-unlock">
+        <div class="hero-label">Se o grupo atingisse <b>80% de Aproveitamento Financeiro</b></div>
+        <div class="hero-value" id="g-hero2-value"></div>
+        <div class="gauge">
+          <div class="gauge-track">
+            <div class="gauge-fill" id="g-gauge-fill" style="width:0%"></div>
+            <div id="g-gauge-ticks"></div>
+            <div class="gauge-marker marker-group" id="g-gauge-marker" style="left:0%"><span class="tag" id="g-gauge-tag">Grupo 0%</span><span class="dot"></span></div>
+          </div>
+        </div>
+        <div class="hero-desc">Bônus estimado do Multiplica Corban por faixa de ApFin do grupo:</div>
+        <div class="corban-table" id="g-corban-table"></div>
+      </div>
+    </div>
+    <div class="bk">
+ <div class="id"><span class="wm"><b>BLACK</b><s>PBSEG</s></span><span class="dt">23/10 → 23/12</span><span class="dt2">dados até 27/10</span></div>
+ <div class="ms2">
+  <div class="mr">
+   <div class="l1"><span class="mn">1</span><span class="lbl">Capital protegido</span><span class="v"><b>R$ 234 mil</b> de <b>meta de R$ 3,84 MM</b></span></div>
+   <div class="tl"><div class="fill" style="width:6.1%"></div><div class="exp" style="left:8.1%"></div><div class="goal"></div></div>
+   <div class="l3"><span class="st late"><i></i>Atrasada · 76% do esperado até hoje</span><span>faltam <b>R$ 3,60 MM</b> · <b>R$ 443 mil/semana</b></span></div>
+  </div>
+  <div class="mr">
+   <div class="l1"><span class="mn">2</span><span class="lbl">ApFin mínimo</span><span class="v"><b>33%</b> no período · <b>mín. 44%</b></span></div>
+   <div class="tl"><div class="fill" style="width:32.5%;background:#ff4d2e"></div><div class="goal" style="left:44.0%;right:auto;"></div></div>
+   <div class="l3"><span class="st warn"><i></i>Faltam 11 p.p.</span><span>vale o melhor entre novembro e o período</span></div>
+  </div>
+ </div>
+ <div class="pz"><div class="lbl">Batendo as duas metas</div><div class="big">R$ 8,8 mil</div><div class="cap">prêmio Black · 0,25% do integrado c/ seguro</div><div class="more">+ comissão do seguro <b>R$ 73,9 mil</b><br><span class="t">= <b>R$ 82,7 mil</b> no período (estimativa)</span></div></div>
+</div>
+    <div class="stmt-kpis">
+      <div class="kpi"><div class="kpi-label">Crédito elegível</div><div class="kpi-value" id="g-kpi-elig"></div></div>
+      <div class="kpi"><div class="kpi-label">Integrado c/ seguro</div><div class="kpi-value" id="g-kpi-integ"></div></div>
+      <div class="kpi"><div class="kpi-label">Aproveitamento (ApFin)</div><div class="kpi-value" id="g-kpi-apfin"></div></div>
+      <div class="kpi"><div class="kpi-label">Comissão do mês</div><div class="kpi-value" id="g-kpi-receita"></div></div>
+    </div>
+    <div class="stmt-split">
+      <div class="section-title">Como está o crédito elegível do grupo</div>
+      <div class="split-bar">
+        <div class="split-seg seg-seguro" id="g-split-seguro">— com seguro</div>
+        <div class="split-seg seg-semseguro" id="g-split-semseguro">— sem seguro</div>
+      </div>
+    </div>
+    <div class="stmt-table">
+      <div class="section-title">Onde está a maior oportunidade — lojas do grupo</div>
+      <table>
+        <thead><tr>
+          <th>Loja</th><th class="num">ApFin</th><th class="num">Crédito sem seguro</th>
+          <th class="num">Comissão na mesa</th><th>Maior oportunidade</th>
+        </tr></thead>
+        <tbody id="g-loja-tbody">
+          <tr><td><span class="store-name">ALCIFMAIS</span><br><span class="store-code">cód. 60814</span></td><td class="num"><span class="pill pill-low">27,8%</span></td><td class="num">R$ 881,2 mil</td><td class="num">R$ 22.245</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">Alcif - AMG</span><br><span class="store-code">cód. 150064</span></td><td class="num"><span class="pill pill-mid">40,2%</span></td><td class="num">R$ 351,6 mil</td><td class="num">R$ 6.942</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">ALCIF - GCM ASSESSORIA EMPRESARIAL LTDA</span><br><span class="store-code">cód. 150060</span></td><td class="num"><span class="pill pill-low">3,7%</span></td><td class="num">R$ 59,3 mil</td><td class="num">R$ 1.185</td><td>Inst Prev Ribeirão Preto</td></tr>
+          <tr><td><span class="store-name">SIMDIMCRED LTDA</span><br><span class="store-code">cód. 150083</span></td><td class="num"><span class="pill pill-low">10,7%</span></td><td class="num">R$ 22,8 mil</td><td class="num">R$ 456</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">GRUPO LOCAL SERVICOS</span><br><span class="store-code">cód. 150086</span></td><td class="num"><span class="pill pill-good">82,4%</span></td><td class="num">R$ 10,4 mil</td><td class="num">R$ 208</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">ALCIF - Dinnerbier</span><br><span class="store-code">cód. 150062</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 6,1 mil</td><td class="num">R$ 151</td><td>Estado PR</td></tr>
+          <tr><td><span class="store-name">ALCIF - JMO SERVICOS DE PREPARACAO</span><br><span class="store-code">cód. 150055</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">ALCIF - 3RN INTERMEDIACOES</span><br><span class="store-code">cód. 150056</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">ALCIF - VIP SOLUCOES</span><br><span class="store-code">cód. 150059</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">MLA SERVICOS</span><br><span class="store-code">cód. 150066</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">LJP SEOUD LTDA</span><br><span class="store-code">cód. 150085</span></td><td class="num"><span class="pill pill-good">100,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>SIAPE</td></tr>
+          <tr class="total"><td>Total do grupo (7 lojas ativas)</td><td class="num">33,6%</td><td class="num">R$ 1,33 Mi</td><td class="num">R$ 31.188</td><td></td></tr></tbody>
+      </table>
+      <div class="alert-card">
+        <span class="alert-icon">⚠️</span>
+        <span class="alert-text" id="g-alert-text"><b>4 lojas do grupo</b> não tiveram nenhuma operação registrada em outubro — ALCIF - JMO SERVICOS DE PREPARACAO, ALCIF - 3RN INTERMEDIACOES, ALCIF - VIP SOLUCOES, MLA SERVICOS. Vale checar se estão inativas, sem repasse de leads, ou com algum problema de cadastro/acesso. Outubro está em andamento, então parte disso pode só ser o mês ainda não ter fechado.</span>
+      </div>
+    </div>
+    <div class="stmt-products" style="margin-top:26px;">
+      <div class="section-title">Principais convênios do grupo</div>
+      <table>
+        <thead><tr>
+          <th>Convênio</th><th class="num">Elegível</th><th class="num">Sem seguro</th>
+          <th class="num">ApFin</th><th class="num">Comissão na mesa</th><th class="num">% da carteira do grupo</th>
+        </tr></thead>
+        <tbody id="g-convenio-tbody">
+          <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 1,7 Mi</td><td class="num">R$ 1,06 Mi</td><td class="num">37,6%</td><td class="num">R$ 21,166</td><td class="num">84,6%</td></tr>
+          <tr class=""><td class="prod-name">FGTS</td><td class="num">R$ 219,3 mil</td><td class="num">R$ 190,9 mil</td><td class="num">13,0%</td><td class="num">R$ 8,398</td><td class="num">10,9%</td></tr>
+          <tr class=""><td class="prod-name">Inst Prev Ribeirão Preto</td><td class="num">R$ 50,0 mil</td><td class="num">R$ 50,0 mil</td><td class="num">0,0%</td><td class="num">R$ 1,000</td><td class="num">2,5%</td></tr>
+          <tr class=""><td class="prod-name">Estado PR</td><td class="num">R$ 13,9 mil</td><td class="num">R$ 13,9 mil</td><td class="num">0,0%</td><td class="num">R$ 349</td><td class="num">0,7%</td></tr>
+          <tr class=""><td class="prod-name">PM Maringa</td><td class="num">R$ 5,0 mil</td><td class="num">R$ 5,0 mil</td><td class="num">0,0%</td><td class="num">R$ 100</td><td class="num">0,2%</td></tr>
+          <tr class=""><td class="prod-name">Estado PR - Cartao</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 4,6 mil</td><td class="num">0,0%</td><td class="num">R$ 93</td><td class="num">0,2%</td></tr>
+          <tr class=""><td class="prod-name">PM Santos</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 2,7 mil</td><td class="num">0,0%</td><td class="num">R$ 53</td><td class="num">0,1%</td></tr>
+          <tr class=""><td class="prod-name">Crédito Trabalhador - CLT</td><td class="num">R$ 6,0 mil</td><td class="num">R$ 6,0 mil</td><td class="num">0,0%</td><td class="num">R$ 30</td><td class="num">0,3%</td></tr>
+          <tr class=""><td class="prod-name">Estado MG</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,1%</td></tr>
+          <tr class=""><td class="prod-name">SPPREV</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,2%</td></tr>
+          <tr class="total"><td>Total do grupo</td><td class="num">R$ 2, Mi</td><td class="num">R$ 1,33 Mi</td><td class="num">33,6%</td><td class="num">R$ 31.188</td><td class="num">100%</td></tr></tbody>
+      </table>
+      <div class="weight-note">"% da carteira do grupo" é a fatia de cada convênio no crédito elegível somado das lojas ativas do grupo — serve de referência pra comparar o mix de cada loja individual (Visão Loja) com o mix geral do grupo.</div>
+    </div>
+    <div class="stmt-trend">
+      <div class="section-title">Evolução da comissão do grupo — últimos 4 meses</div>
+      <div class="trend-row"><div class="trend-bar-wrap"><div class="trend-value">R$ 43,0 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>45,7%</b><br>Repasse médio <b>2,2%</b><br>Comissão na mesa <b class="opp-perdida">R$ 57,0 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 34,0 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:79.2%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>45,3%</b><br>Repasse médio <b>2,1%</b><br>Comissão na mesa <b class="opp-perdida">R$ 44,6 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 30,6 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:71.2%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>37,0%</b><br>Repasse médio <b>2,1%</b><br>Comissão na mesa <b class="opp-perdida">R$ 55,9 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 14,1 mil</div><div class="trend-bar-track"><div class="trend-bar current" style="height:32.8%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>33,6%</b><br>Repasse médio <b>2,1%</b><br>Comissão na mesa <b class="opp-perdida">R$ 31,2 mil</b></div></div></div>
+      <div class="bank-note" style="margin-top:14px;font-size:12.5px;color:var(--text-soft);line-height:1.5;">"Repasse médio" é a comissão de seguro recebida dividida pelo total integrado com seguro no mês — a taxa efetiva que a Paraná Seguros pagou ao grupo naquele período.</div>
+    </div>
+  </div>
+
+  <div style="margin:24px 32px 0;font-weight:700;font-size:12.5px;text-align:center;color:var(--ink);">"Comissão na mesa" corresponde ao % de Repasse aplicado ao crédito elegível que saiu sem seguro.</div>
+
+  <div style="font-size:11.5px;color:#5B6472;text-align:center;margin:0 32px 10px;"><b>Black PBSEG</b>: capital protegido = prêmio do seguro ÷ taxa; meta e ApFin mínimo valem para o grupo, de 23/10 a 23/12/2026. Ganhos estimados para o período se o grupo bater as duas metas: comissão ≈ repasse médio do grupo × integrado c/ seguro na meta; Multiplica Corban na faixa do ApFin mínimo; prêmio Black = 0,25% do integrado c/ seguro. O pagamento segue o regulamento da campanha.</div><div class="stmt-footer">
+    Extrato gerado automaticamente a partir da base de operações atualizada em <b>26/10/2026</b>. Os valores apresentados são aproximados. Em caso de grandes divergências nos valores, favor contatar o time de consultores.
+  </div>
+
+</div>
+
+<script>
+  const btnLoja = document.getElementById('btn-loja');
+  const btnGrupo = document.getElementById('btn-grupo');
+  const panelLoja = document.getElementById('panel-loja');
+  const panelGrupo = document.getElementById('panel-grupo');
+  const entityName = document.getElementById('entity-name');
+  const lojaSelect = document.getElementById('loja-select');
+  const MES_LC_ANO = "outubro/2026";
+  const NOME_GRUPO_EXIB = "ALCIFMAIS";
+  const N_ATIVAS = 7;
+
+  const G = {
+    heroLossValue: "R$ 31.188",
+    heroLossSub: "R$ 1,33 Mi em crédito elegível do grupo saíram sem seguro (dado parcial de outubro, mês em andamento).",
+    heroWhatIfValue: "Receberia +R$ 19.500 em comissão + R$ 8.402 de Multiplica Corban este mês", heroWhatIfSub: "Hoje o grupo está em 33,6% — R$ 19,5 mil a mais é o que seria ganho chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+    gaugeTicks: "<div class=\"gauge-tick\" style=\"left:60%\"></div><div class=\"gauge-tick-pct\" style=\"left:60%\">60%</div><div class=\"gauge-tick\" style=\"left:70%\"></div><div class=\"gauge-tick-pct\" style=\"left:70%\">70%</div><div class=\"gauge-tick\" style=\"left:80%\"></div><div class=\"gauge-tick-pct\" style=\"left:80%\">80%</div><div class=\"gauge-tick\" style=\"left:90%\"></div><div class=\"gauge-tick-pct\" style=\"left:90%\">90%</div>", corbanTable: "<div class=\"ct-row ct-header\"><div class=\"ct-label\">Aproveitamento Financeiro</div><div class=\"ct-col\">60%</div><div class=\"ct-col\">70%</div><div class=\"ct-col\">80%</div><div class=\"ct-col\">90%</div></div><div class=\"ct-row\"><div class=\"ct-label\">Multiplica Corban</div><div class=\"ct-col\">+R$ 3,2 mil</div><div class=\"ct-col\">+R$ 5,1 mil</div><div class=\"ct-col\">+R$ 8,4 mil</div><div class=\"ct-col\">+R$ 12,3 mil</div></div>",
+    apfinNum: 33.6, apfinLabel: "33,6%", nAtivas: 7,
+    elig: "R$ 2, Mi", integ: "R$ 673,2 mil",
+    apfin: "33,6%", receita: "R$ 14.108",
+    splitSeguro: 33.6, splitSemSeguro: 66.4,
+    alertText: "<b>4 lojas do grupo</b> não tiveram nenhuma operação registrada em outubro — ALCIF - JMO SERVICOS DE PREPARACAO, ALCIF - 3RN INTERMEDIACOES, ALCIF - VIP SOLUCOES, MLA SERVICOS. Vale checar se estão inativas, sem repasse de leads, ou com algum problema de cadastro/acesso. Outubro está em andamento, então parte disso pode só ser o mês ainda não ter fechado.",
+    lojaTbody: `
+          <tr><td><span class="store-name">ALCIFMAIS</span><br><span class="store-code">cód. 60814</span></td><td class="num"><span class="pill pill-low">27,8%</span></td><td class="num">R$ 881,2 mil</td><td class="num">R$ 22.245</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">Alcif - AMG</span><br><span class="store-code">cód. 150064</span></td><td class="num"><span class="pill pill-mid">40,2%</span></td><td class="num">R$ 351,6 mil</td><td class="num">R$ 6.942</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">ALCIF - GCM ASSESSORIA EMPRESARIAL LTDA</span><br><span class="store-code">cód. 150060</span></td><td class="num"><span class="pill pill-low">3,7%</span></td><td class="num">R$ 59,3 mil</td><td class="num">R$ 1.185</td><td>Inst Prev Ribeirão Preto</td></tr>
+          <tr><td><span class="store-name">SIMDIMCRED LTDA</span><br><span class="store-code">cód. 150083</span></td><td class="num"><span class="pill pill-low">10,7%</span></td><td class="num">R$ 22,8 mil</td><td class="num">R$ 456</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">GRUPO LOCAL SERVICOS</span><br><span class="store-code">cód. 150086</span></td><td class="num"><span class="pill pill-good">82,4%</span></td><td class="num">R$ 10,4 mil</td><td class="num">R$ 208</td><td>SIAPE</td></tr>
+          <tr><td><span class="store-name">ALCIF - Dinnerbier</span><br><span class="store-code">cód. 150062</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 6,1 mil</td><td class="num">R$ 151</td><td>Estado PR</td></tr>
+          <tr><td><span class="store-name">ALCIF - JMO SERVICOS DE PREPARACAO</span><br><span class="store-code">cód. 150055</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">ALCIF - 3RN INTERMEDIACOES</span><br><span class="store-code">cód. 150056</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">ALCIF - VIP SOLUCOES</span><br><span class="store-code">cód. 150059</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">MLA SERVICOS</span><br><span class="store-code">cód. 150066</span></td><td class="num"><span class="pill pill-low">0,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>—</td></tr>
+          <tr><td><span class="store-name">LJP SEOUD LTDA</span><br><span class="store-code">cód. 150085</span></td><td class="num"><span class="pill pill-good">100,0%</span></td><td class="num">R$ 0</td><td class="num">R$ 0</td><td>SIAPE</td></tr>
+          <tr class="total"><td>Total do grupo (7 lojas ativas)</td><td class="num">33,6%</td><td class="num">R$ 1,33 Mi</td><td class="num">R$ 31.188</td><td></td></tr>`,
+    convenioTbody: `
+          <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 1,7 Mi</td><td class="num">R$ 1,06 Mi</td><td class="num">37,6%</td><td class="num">R$ 21,166</td><td class="num">84,6%</td></tr>
+          <tr class=""><td class="prod-name">FGTS</td><td class="num">R$ 219,3 mil</td><td class="num">R$ 190,9 mil</td><td class="num">13,0%</td><td class="num">R$ 8,398</td><td class="num">10,9%</td></tr>
+          <tr class=""><td class="prod-name">Inst Prev Ribeirão Preto</td><td class="num">R$ 50,0 mil</td><td class="num">R$ 50,0 mil</td><td class="num">0,0%</td><td class="num">R$ 1,000</td><td class="num">2,5%</td></tr>
+          <tr class=""><td class="prod-name">Estado PR</td><td class="num">R$ 13,9 mil</td><td class="num">R$ 13,9 mil</td><td class="num">0,0%</td><td class="num">R$ 349</td><td class="num">0,7%</td></tr>
+          <tr class=""><td class="prod-name">PM Maringa</td><td class="num">R$ 5,0 mil</td><td class="num">R$ 5,0 mil</td><td class="num">0,0%</td><td class="num">R$ 100</td><td class="num">0,2%</td></tr>
+          <tr class=""><td class="prod-name">Estado PR - Cartao</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 4,6 mil</td><td class="num">0,0%</td><td class="num">R$ 93</td><td class="num">0,2%</td></tr>
+          <tr class=""><td class="prod-name">PM Santos</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 2,7 mil</td><td class="num">0,0%</td><td class="num">R$ 53</td><td class="num">0,1%</td></tr>
+          <tr class=""><td class="prod-name">Crédito Trabalhador - CLT</td><td class="num">R$ 6,0 mil</td><td class="num">R$ 6,0 mil</td><td class="num">0,0%</td><td class="num">R$ 30</td><td class="num">0,3%</td></tr>
+          <tr class=""><td class="prod-name">Estado MG</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,1%</td></tr>
+          <tr class=""><td class="prod-name">SPPREV</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,2%</td></tr>
+          <tr class="total"><td>Total do grupo</td><td class="num">R$ 2, Mi</td><td class="num">R$ 1,33 Mi</td><td class="num">33,6%</td><td class="num">R$ 31.188</td><td class="num">100%</td></tr>`
+  };
+  const LOJAS = {
+    '60814': {
+      nome: "ALCIFMAIS",
+      elig: "R$ 1,22 Mi", integ: "R$ 339,5 mil", apfin: "27,8%", apfinNum: 27.81,
+      receita: "R$ 7.466", semPct: 72.2,
+      heroLossValue: "R$ 22.245", heroLossSub: "R$ 881,2 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Receberia +R$ 14.010 em comissão este mês", heroWhatIfSub: "Hoje você está em 27,8% — R$ 14,0 mil a mais é o que você ganharia chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 974,2 mil</td><td class="num">R$ 670,2 mil</td><td class="num">31,2%</td><td class="num">R$ 13.403</td><td class="num">79,8% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:#8A5A16;">↓</span></td></tr>
+          <tr class=""><td class="prod-name">FGTS</td><td class="num">R$ 219,0 mil</td><td class="num">R$ 190,9 mil</td><td class="num">12,9%</td><td class="num">R$ 8.398</td><td class="num">17,9% <span style="color:var(--text-soft);">/ 10,9%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">Estado PR</td><td class="num">R$ 7,9 mil</td><td class="num">R$ 7,9 mil</td><td class="num">0,0%</td><td class="num">R$ 197</td><td class="num">0,6% <span style="color:var(--text-soft);">/ 0,7%</span></td></tr>
+          <tr class=""><td class="prod-name">PM Maringa</td><td class="num">R$ 5,0 mil</td><td class="num">R$ 5,0 mil</td><td class="num">0,0%</td><td class="num">R$ 100</td><td class="num">0,4% <span style="color:var(--text-soft);">/ 0,2%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">Estado PR - Cartao</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 4,6 mil</td><td class="num">0,0%</td><td class="num">R$ 93</td><td class="num">0,4% <span style="color:var(--text-soft);">/ 0,2%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">PM Santos</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 2,7 mil</td><td class="num">0,0%</td><td class="num">R$ 53</td><td class="num">0,2% <span style="color:var(--text-soft);">/ 0,1%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">Estado MG</td><td class="num">R$ 2,7 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,2% <span style="color:var(--text-soft);">/ 0,1%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">SPPREV</td><td class="num">R$ 4,6 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,4% <span style="color:var(--text-soft);">/ 0,2%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 1,22 Mi</td><td class="num">R$ 881,2 mil</td><td class="num">27,8%</td><td class="num">R$ 22.245</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Joyce Alves De Miranda <span class="tag-top">maior oportunidade · 50% do total</span></td><td class="num">R$ 563,4 mil</td><td class="num">R$ 556,4 mil</td><td class="num">1,2%</td><td class="num">R$ 11.128</td></tr>
+        <tr class="second-opp"><td class="prod-name">Dyego Carlos Martins <span class="tag-top-sm">11% do total</span></td><td class="num">R$ 62,1 mil</td><td class="num">R$ 58,1 mil</td><td class="num">6,4%</td><td class="num">R$ 2.556</td></tr>
+        <tr class="second-opp"><td class="prod-name">Jessica Santos Cunha De Souza <span class="tag-top-sm">4% do total</span></td><td class="num">R$ 21,0 mil</td><td class="num">R$ 21,0 mil</td><td class="num">0,0%</td><td class="num">R$ 923</td></tr>
+        <tr class=""><td class="prod-name">Não Tem Nome Alternativo</td><td class="num">R$ 39,6 mil</td><td class="num">R$ 23,5 mil</td><td class="num">40,7%</td><td class="num">R$ 635</td></tr>
+        <tr class=""><td class="prod-name">Daniela Cristina Barbosa Moreira</td><td class="num">R$ 21,1 mil</td><td class="num">R$ 21,1 mil</td><td class="num">0,0%</td><td class="num">R$ 422</td></tr>
+        <tr class=""><td class="prod-name">Karla Aparecida Freitas Clemente</td><td class="num">R$ 17,0 mil</td><td class="num">R$ 17,0 mil</td><td class="num">0,0%</td><td class="num">R$ 340</td></tr>
+        <tr class=""><td class="prod-name">Walyson Chiulo Prado</td><td class="num">R$ 7,6 mil</td><td class="num">R$ 7,6 mil</td><td class="num">0,0%</td><td class="num">R$ 335</td></tr>
+        <tr class=""><td class="prod-name">Gustavo Vinicius Martins Kath</td><td class="num">R$ 7,5 mil</td><td class="num">R$ 7,5 mil</td><td class="num">0,0%</td><td class="num">R$ 331</td></tr>
+        <tr class=""><td class="prod-name">Diogo Matheus De Souza Barbosa</td><td class="num">R$ 16,3 mil</td><td class="num">R$ 16,3 mil</td><td class="num">0,0%</td><td class="num">R$ 327</td></tr>
+        <tr class=""><td class="prod-name">Fabiola Onofre Louzada</td><td class="num">R$ 6,7 mil</td><td class="num">R$ 6,7 mil</td><td class="num">0,0%</td><td class="num">R$ 295</td></tr>
+        <tr><td class="prod-name" style="font-style:italic;color:var(--text-soft);">+ 63 outros(as) operadores(as)</td><td class="num">R$ 458,3 mil</td><td class="num">R$ 145,9 mil</td><td class="num">—</td><td class="num">R$ 4.951</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 1,22 Mi</td><td class="num">R$ 881,2 mil</td><td class="num">27,8%</td><td class="num">R$ 22.245</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 24,3 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>43,0%</b><br>Repasse médio <b>2,3%</b><br>Comissão na mesa <b class="opp-perdida">R$ 35,6 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 13,6 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:56.1%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>33,9%</b><br>Repasse médio <b>2,2%</b><br>Comissão na mesa <b class="opp-perdida">R$ 29,6 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 16,6 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:68.1%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>29,6%</b><br>Repasse médio <b>2,2%</b><br>Comissão na mesa <b class="opp-perdida">R$ 42,8 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 7,5 mil</div><div class="trend-bar-track"><div class="trend-bar current" style="height:30.7%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>27,8%</b><br>Repasse médio <b>2,2%</b><br>Comissão na mesa <b class="opp-perdida">R$ 22,2 mil</b></div></div>`
+    },
+    '150055': {
+      nome: "ALCIF - JMO SERVICOS DE PREPARACAO",
+      elig: "R$ 0", integ: "R$ 0", apfin: "0,0%", apfinNum: 0.0,
+      receita: "R$ 0", semPct: 0,
+      heroLossValue: "R$ 0", heroLossSub: "Nenhuma operação registrada em outubro até o momento.",
+      heroWhatIfValue: "Sem dados suficientes", heroWhatIfSub: "Você ainda não teve nenhuma operação registrada neste mês.",
+      convenioTbody: `
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 0</td><td class="num">R$ 0</td><td class="num">0,0%</td><td class="num">R$ 0</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr><td colspan="5" style="text-align:center;color:var(--text-soft);font-style:italic;">Nenhuma operação registrada em outubro.</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 21</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 147</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar current" style="height:0.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>`
+    },
+    '150056': {
+      nome: "ALCIF - 3RN INTERMEDIACOES",
+      elig: "R$ 0", integ: "R$ 0", apfin: "0,0%", apfinNum: 0.0,
+      receita: "R$ 0", semPct: 0,
+      heroLossValue: "R$ 0", heroLossSub: "Nenhuma operação registrada em outubro até o momento.",
+      heroWhatIfValue: "Sem dados suficientes", heroWhatIfSub: "Você ainda não teve nenhuma operação registrada neste mês.",
+      convenioTbody: `
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 0</td><td class="num">R$ 0</td><td class="num">0,0%</td><td class="num">R$ 0</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr><td colspan="5" style="text-align:center;color:var(--text-soft);font-style:italic;">Nenhuma operação registrada em outubro.</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar current" style="height:0.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>`
+    },
+    '150059': {
+      nome: "ALCIF - VIP SOLUCOES",
+      elig: "R$ 0", integ: "R$ 0", apfin: "0,0%", apfinNum: 0.0,
+      receita: "R$ 0", semPct: 0,
+      heroLossValue: "R$ 0", heroLossSub: "Nenhuma operação registrada em outubro até o momento.",
+      heroWhatIfValue: "Sem dados suficientes", heroWhatIfSub: "Você ainda não teve nenhuma operação registrada neste mês.",
+      convenioTbody: `
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 0</td><td class="num">R$ 0</td><td class="num">0,0%</td><td class="num">R$ 0</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr><td colspan="5" style="text-align:center;color:var(--text-soft);font-style:italic;">Nenhuma operação registrada em outubro.</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar current" style="height:0.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>`
+    },
+    '150060': {
+      nome: "ALCIF - GCM ASSESSORIA EMPRESARIAL LTDA",
+      elig: "R$ 61,6 mil", integ: "R$ 2,3 mil", apfin: "3,7%", apfinNum: 3.74,
+      receita: "R$ 46", semPct: 96.3,
+      heroLossValue: "R$ 1.185", heroLossSub: "R$ 59,3 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Receberia +R$ 939 em comissão este mês", heroWhatIfSub: "Hoje você está em 3,7% — R$ 939 a mais é o que você ganharia chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">Inst Prev Ribeirão Preto <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 50,0 mil</td><td class="num">R$ 50,0 mil</td><td class="num">0,0%</td><td class="num">R$ 1.000</td><td class="num">81,2% <span style="color:var(--text-soft);">/ 2,5%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">SIAPE</td><td class="num">R$ 11,6 mil</td><td class="num">R$ 9,3 mil</td><td class="num">19,9%</td><td class="num">R$ 185</td><td class="num">18,8% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:#8A5A16;">↓</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 61,6 mil</td><td class="num">R$ 59,3 mil</td><td class="num">3,7%</td><td class="num">R$ 1.185</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Larissa Rodrigues Dos Santos <span class="tag-top">maior oportunidade · 84% do total</span></td><td class="num">R$ 50,0 mil</td><td class="num">R$ 50,0 mil</td><td class="num">0,0%</td><td class="num">R$ 1.000</td></tr>
+        <tr class="second-opp"><td class="prod-name">Kalliandra Sousa Rodrigues Santos <span class="tag-top-sm">13% do total</span></td><td class="num">R$ 7,7 mil</td><td class="num">R$ 7,7 mil</td><td class="num">0,0%</td><td class="num">R$ 154</td></tr>
+        <tr class="second-opp"><td class="prod-name">Guilherme Rezende Souto <span class="tag-top-sm">3% do total</span></td><td class="num">R$ 1,6 mil</td><td class="num">R$ 1,6 mil</td><td class="num">0,0%</td><td class="num">R$ 31</td></tr>
+        <tr class=""><td class="prod-name">Gabriel Oliveira Dos Santos</td><td class="num">R$ 2,3 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 61,6 mil</td><td class="num">R$ 59,3 mil</td><td class="num">3,7%</td><td class="num">R$ 1.185</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 69</div><div class="trend-bar-track"><div class="trend-bar" style="height:11.3%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 607</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,4%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 489</div><div class="trend-bar-track"><div class="trend-bar" style="height:80.6%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 46</div><div class="trend-bar-track"><div class="trend-bar current" style="height:7.6%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>3,7%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 1,2 mil</b></div></div>`
+    },
+    '150062': {
+      nome: "ALCIF - Dinnerbier",
+      elig: "R$ 6,1 mil", integ: "R$ 0", apfin: "0,0%", apfinNum: 0.0,
+      receita: "R$ 0", semPct: 100.0,
+      heroLossValue: "R$ 151", heroLossSub: "R$ 6,1 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Receberia +R$ 0 em comissão este mês", heroWhatIfSub: "Hoje você está em 0,0% — R$ 0 a mais é o que você ganharia chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">Estado PR <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 6,1 mil</td><td class="num">R$ 6,1 mil</td><td class="num">0,0%</td><td class="num">R$ 151</td><td class="num">100,0% <span style="color:var(--text-soft);">/ 0,7%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 6,1 mil</td><td class="num">R$ 6,1 mil</td><td class="num">0,0%</td><td class="num">R$ 151</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Tatiane Andrea Dinnebier <span class="tag-top">maior oportunidade · 100% do total</span></td><td class="num">R$ 6,1 mil</td><td class="num">R$ 6,1 mil</td><td class="num">0,0%</td><td class="num">R$ 151</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 6,1 mil</td><td class="num">R$ 6,1 mil</td><td class="num">0,0%</td><td class="num">R$ 151</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 2,4 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>15,7%</b><br>Repasse médio <b>2,5%</b><br>Comissão na mesa <b class="opp-perdida">R$ 12,6 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 1,5 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:63.6%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>79,8%</b><br>Repasse médio <b>2,5%</b><br>Comissão na mesa <b class="opp-perdida">R$ 369</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 1,6 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:66.4%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>86,3%</b><br>Repasse médio <b>2,5%</b><br>Comissão na mesa <b class="opp-perdida">R$ 247</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar current" style="height:0.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 151</b></div></div>`
+    },
+    '150064': {
+      nome: "Alcif - AMG",
+      elig: "R$ 588,5 mil", integ: "R$ 236,9 mil", apfin: "40,2%", apfinNum: 40.25,
+      receita: "R$ 4.705", semPct: 59.8,
+      heroLossValue: "R$ 6.942", heroLossSub: "R$ 351,6 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Receberia +R$ 4.647 em comissão este mês", heroWhatIfSub: "Hoje você está em 40,2% — R$ 4,6 mil a mais é o que você ganharia chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 582,2 mil</td><td class="num">R$ 345,6 mil</td><td class="num">40,6%</td><td class="num">R$ 6.912</td><td class="num">98,9% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">Crédito Trabalhador - CLT</td><td class="num">R$ 6,0 mil</td><td class="num">R$ 6,0 mil</td><td class="num">0,0%</td><td class="num">R$ 30</td><td class="num">1,0% <span style="color:var(--text-soft);">/ 0,3%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+          <tr class=""><td class="prod-name">FGTS</td><td class="num">R$ 287</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">0,0% <span style="color:var(--text-soft);">/ 10,9%</span> <span style="color:#8A5A16;">↓</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 588,5 mil</td><td class="num">R$ 351,6 mil</td><td class="num">40,2%</td><td class="num">R$ 6.942</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Angélica Da Costa Teixeira Franceli <span class="tag-top">maior oportunidade · 20% do total</span></td><td class="num">R$ 82,3 mil</td><td class="num">R$ 69,8 mil</td><td class="num">15,1%</td><td class="num">R$ 1.397</td></tr>
+        <tr class="second-opp"><td class="prod-name">Helenilda Sousa Viana <span class="tag-top-sm">19% do total</span></td><td class="num">R$ 65,5 mil</td><td class="num">R$ 65,5 mil</td><td class="num">0,0%</td><td class="num">R$ 1.310</td></tr>
+        <tr class="second-opp"><td class="prod-name">Laila Patricia De Sousa Moura <span class="tag-top-sm">16% do total</span></td><td class="num">R$ 56,6 mil</td><td class="num">R$ 56,6 mil</td><td class="num">0,0%</td><td class="num">R$ 1.132</td></tr>
+        <tr class=""><td class="prod-name">Cecilia Pereira Nunes De Sa</td><td class="num">R$ 27,1 mil</td><td class="num">R$ 27,1 mil</td><td class="num">0,0%</td><td class="num">R$ 543</td></tr>
+        <tr class=""><td class="prod-name">Alinne Rodrigues Garcao</td><td class="num">R$ 22,0 mil</td><td class="num">R$ 22,0 mil</td><td class="num">0,0%</td><td class="num">R$ 440</td></tr>
+        <tr class=""><td class="prod-name">Gislene Teodoro Gomes</td><td class="num">R$ 20,9 mil</td><td class="num">R$ 20,9 mil</td><td class="num">0,0%</td><td class="num">R$ 419</td></tr>
+        <tr class=""><td class="prod-name">Glenda De Sousa Lima</td><td class="num">R$ 27,3 mil</td><td class="num">R$ 20,2 mil</td><td class="num">26,1%</td><td class="num">R$ 404</td></tr>
+        <tr class=""><td class="prod-name">Rodrigo Bergholz Rocha</td><td class="num">R$ 13,8 mil</td><td class="num">R$ 13,8 mil</td><td class="num">0,0%</td><td class="num">R$ 275</td></tr>
+        <tr class=""><td class="prod-name">Marciel Pereira Bonfim</td><td class="num">R$ 12,1 mil</td><td class="num">R$ 12,1 mil</td><td class="num">0,0%</td><td class="num">R$ 242</td></tr>
+        <tr class=""><td class="prod-name">Paulo Roberto Espezim</td><td class="num">R$ 12,0 mil</td><td class="num">R$ 12,0 mil</td><td class="num">0,0%</td><td class="num">R$ 240</td></tr>
+        <tr><td class="prod-name" style="font-style:italic;color:var(--text-soft);">+ 23 outros(as) operadores(as)</td><td class="num">R$ 248,8 mil</td><td class="num">R$ 31,5 mil</td><td class="num">—</td><td class="num">R$ 540</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 588,5 mil</td><td class="num">R$ 351,6 mil</td><td class="num">40,2%</td><td class="num">R$ 6.942</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 15,9 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>67,8%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 7,6 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 14,2 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:89.8%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>49,6%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 14,3 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 9,2 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:58.3%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>44,6%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 11,4 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 4,7 mil</div><div class="trend-bar-track"><div class="trend-bar current" style="height:29.7%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>40,2%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 6,9 mil</b></div></div>`
+    },
+    '150066': {
+      nome: "MLA SERVICOS",
+      elig: "R$ 0", integ: "R$ 0", apfin: "0,0%", apfinNum: 0.0,
+      receita: "R$ 0", semPct: 0,
+      heroLossValue: "R$ 0", heroLossSub: "Nenhuma operação registrada em outubro até o momento.",
+      heroWhatIfValue: "Sem dados suficientes", heroWhatIfSub: "Você ainda não teve nenhuma operação registrada neste mês.",
+      convenioTbody: `
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 0</td><td class="num">R$ 0</td><td class="num">0,0%</td><td class="num">R$ 0</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr><td colspan="5" style="text-align:center;color:var(--text-soft);font-style:italic;">Nenhuma operação registrada em outubro.</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 348</div><div class="trend-bar-track"><div class="trend-bar" style="height:72.5%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>21,1%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 1,3 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 238</div><div class="trend-bar-track"><div class="trend-bar" style="height:49.6%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>70,1%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 102</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 480</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar current" style="height:0.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>`
+    },
+    '150083': {
+      nome: "SIMDIMCRED LTDA",
+      elig: "R$ 25,5 mil", integ: "R$ 2,7 mil", apfin: "10,7%", apfinNum: 10.67,
+      receita: "R$ 55", semPct: 89.3,
+      heroLossValue: "R$ 456", heroLossSub: "R$ 22,8 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Receberia +R$ 354 em comissão este mês", heroWhatIfSub: "Hoje você está em 10,7% — R$ 354 a mais é o que você ganharia chegando a 80%, mantendo a mesma taxa média de comissionamento de hoje.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 25,5 mil</td><td class="num">R$ 22,8 mil</td><td class="num">10,7%</td><td class="num">R$ 456</td><td class="num">100,0% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 25,5 mil</td><td class="num">R$ 22,8 mil</td><td class="num">10,7%</td><td class="num">R$ 456</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Juliana Dias Otoni <span class="tag-top">maior oportunidade · 100% do total</span></td><td class="num">R$ 25,5 mil</td><td class="num">R$ 22,8 mil</td><td class="num">10,7%</td><td class="num">R$ 456</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 25,5 mil</td><td class="num">R$ 22,8 mil</td><td class="num">10,7%</td><td class="num">R$ 456</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 55</div><div class="trend-bar-track"><div class="trend-bar current" style="height:100.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>10,7%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 456</b></div></div>`
+    },
+    '150085': {
+      nome: "LJP SEOUD LTDA",
+      elig: "R$ 43,1 mil", integ: "R$ 43,1 mil", apfin: "100,0%", apfinNum: 100.0,
+      receita: "R$ 861", semPct: 0.0,
+      heroLossValue: "R$ 0", heroLossSub: "R$ 0 em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Já está no nível máximo!", heroWhatIfSub: "Você está com 100% de Aproveitamento Financeiro — não há oportunidade em aberto.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 43,1 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">100,0% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 43,1 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Fernanda Magalhaes Laurindo <span class="tag-top">maior oportunidade · 0% do total</span></td><td class="num">R$ 43,1 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 43,1 mil</td><td class="num">R$ 0</td><td class="num">100,0%</td><td class="num">R$ 0</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 861</div><div class="trend-bar-track"><div class="trend-bar current" style="height:100.0%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>100,0%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>`
+    },
+    '150086': {
+      nome: "GRUPO LOCAL SERVICOS",
+      elig: "R$ 59,2 mil", integ: "R$ 48,7 mil", apfin: "82,4%", apfinNum: 82.39,
+      receita: "R$ 975", semPct: 17.6,
+      heroLossValue: "R$ 208", heroLossSub: "R$ 10,4 mil em crédito elegível saíram sem seguro — dado parcial de outubro, calculado operador a operador.",
+      heroWhatIfValue: "Parabéns — já está acima da meta!", heroWhatIfSub: "Você já está com 82,4% de Aproveitamento Financeiro, acima da meta de 80%.",
+      convenioTbody: `
+        <tr class="top-opp"><td class="prod-name">SIAPE <span class="tag-top">maior oportunidade</span></td><td class="num">R$ 59,2 mil</td><td class="num">R$ 10,4 mil</td><td class="num">82,4%</td><td class="num">R$ 208</td><td class="num">100,0% <span style="color:var(--text-soft);">/ 84,6%</span> <span style="color:var(--ink-3);">↑</span></td></tr>
+        <tr class="total"><td>Total da loja</td><td class="num">R$ 59,2 mil</td><td class="num">R$ 10,4 mil</td><td class="num">82,4%</td><td class="num">R$ 208</td><td class="num">100%</td></tr>`,
+      operadorTbody: `
+        <tr class="top-opp"><td class="prod-name">Helena Vitoria Da Silva Martins <span class="tag-top">maior oportunidade · 100% do total</span></td><td class="num">R$ 59,2 mil</td><td class="num">R$ 10,4 mil</td><td class="num">82,4%</td><td class="num">R$ 208</td></tr>
+        <tr class="total"><td>Total</td><td class="num">R$ 59,2 mil</td><td class="num">R$ 10,4 mil</td><td class="num">82,4%</td><td class="num">R$ 208</td></tr>`,
+      trendHtml: `<div class="trend-bar-wrap"><div class="trend-value">R$ 0</div><div class="trend-bar-track"><div class="trend-bar" style="height:0.0%"></div></div><div class="trend-month">Jul</div><div class="trend-detail">ApFin <b>0,0%</b><br>Repasse médio <b>0,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 0</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 3,8 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:100.0%"></div></div><div class="trend-month">Ago</div><div class="trend-detail">ApFin <b>94,7%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 211</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 2,1 mil</div><div class="trend-bar-track"><div class="trend-bar" style="height:54.9%"></div></div><div class="trend-month">Set</div><div class="trend-detail">ApFin <b>60,6%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 1,4 mil</b></div></div>
+        <div class="trend-bar-wrap"><div class="trend-value">R$ 975</div><div class="trend-bar-track"><div class="trend-bar current" style="height:25.7%"></div></div><div class="trend-month">Out</div><div class="trend-detail">ApFin <b>82,4%</b><br>Repasse médio <b>2,0%</b><br>Comissão na mesa <b class="opp-perdida">R$ 208</b></div></div>`
+    }
+  };
+
+  function setSplitSeg(el, pct, label){
+    if(pct <= 0){ el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.style.width = pct + '%';
+    el.textContent = label;
+  }
+
+  function applyGrupo(){
+    document.getElementById('greeting-grupo').innerHTML = 'Aqui estão as principais oportunidades do <b>Grupo ' + NOME_GRUPO_EXIB + '</b> no mês de ' + MES_LC_ANO + '.';
+    document.getElementById('g-hero1-value').textContent = G.heroLossValue;
+    document.getElementById('g-hero1-sub').textContent = G.heroLossSub;
+    document.getElementById('g-hero2-value').textContent = G.heroWhatIfValue;
+    document.getElementById('g-gauge-ticks').innerHTML = G.gaugeTicks;
+    document.getElementById('g-corban-table').innerHTML = G.corbanTable;
+    document.getElementById('g-gauge-fill').style.width = G.apfinNum + '%';
+    document.getElementById('g-gauge-marker').style.left = G.apfinNum + '%';
+    document.getElementById('g-gauge-tag').textContent = 'Grupo ' + G.apfinLabel;
+    document.getElementById('g-kpi-elig').textContent = G.elig;
+    document.getElementById('g-kpi-integ').textContent = G.integ;
+    document.getElementById('g-kpi-apfin').textContent = G.apfin;
+    document.getElementById('g-kpi-receita').textContent = G.receita;
+    setSplitSeg(document.getElementById('g-split-seguro'), G.splitSeguro, G.apfin + ' com seguro');
+    setSplitSeg(document.getElementById('g-split-semseguro'), G.splitSemSeguro, G.splitSemSeguro.toFixed(1).replace('.', ',') + '% sem seguro');
+    entityName.innerHTML = 'Grupo ' + NOME_GRUPO_EXIB + ' <span style="opacity:.6">· ' + N_ATIVAS + ' lojas ativas</span>';
+  }
+
+  function applyLoja(id){
+    const d = LOJAS[id];
+    if(!d) return;
+    entityName.innerHTML = d.nome + ' <span style="opacity:.6">· cód. ' + id + '</span>';
+    document.getElementById('greeting-loja').innerHTML = 'Aqui estão as principais oportunidades da loja <b>' + d.nome + '</b> no mês de ' + MES_LC_ANO + '.';
+    document.getElementById('kpi-elig').textContent = d.elig;
+    document.getElementById('kpi-integ').textContent = d.integ;
+    document.getElementById('kpi-apfin').textContent = d.apfin;
+    document.getElementById('kpi-receita').textContent = d.receita;
+    setSplitSeg(document.getElementById('split-seguro'), d.apfinNum, d.apfin + ' com seguro');
+    setSplitSeg(document.getElementById('split-semseguro'), d.semPct, d.semPct.toFixed(1).replace('.', ',') + '% sem seguro');
+    document.getElementById('hero1-value').textContent = d.heroLossValue;
+    document.getElementById('hero1-sub').textContent = d.heroLossSub;
+    document.getElementById('hero2-loja-value').textContent = d.heroWhatIfValue;
+    document.getElementById('hero2-loja-sub').textContent = d.heroWhatIfSub;
+    document.getElementById('gauge-fill-loja').style.width = d.apfinNum + '%';
+    document.getElementById('gauge-marker-loja').style.left = d.apfinNum + '%';
+    document.getElementById('gauge-tag-loja').textContent = 'Você ' + d.apfin;
+    document.querySelector('#detail-convenio-wrap tbody').innerHTML = d.convenioTbody;
+    document.querySelector('#detail-operador-wrap tbody').innerHTML = d.operadorTbody;
+    document.getElementById('trend-loja-row').innerHTML = d.trendHtml;
+  }
+
+  lojaSelect.addEventListener('change', (e) => applyLoja(e.target.value));
+
+  btnLoja.addEventListener('click', () => {
+    btnLoja.classList.add('active'); btnGrupo.classList.remove('active');
+    panelLoja.style.display = 'block'; panelGrupo.style.display = 'none';
+    lojaSelect.style.display = 'inline-block';
+    applyLoja(lojaSelect.value);
+  });
+  btnGrupo.addEventListener('click', () => {
+    btnGrupo.classList.add('active'); btnLoja.classList.remove('active');
+    panelGrupo.style.display = 'block'; panelLoja.style.display = 'none';
+    lojaSelect.style.display = 'none';
+    applyGrupo();
+  });
+
+  applyGrupo();
+</script>
+
+</body>
+</html>
